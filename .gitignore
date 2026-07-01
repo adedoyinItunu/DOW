@@ -1,0 +1,14 @@
+# data (not ours to redistribute / too big)
+mendeley.csv
+dataset__3_.csv
+*.csv
+*.npz
+*.pt
+
+# generated figures (optional — rebuildable)
+# *.png
+
+# python junk
+__pycache__/
+*.pyc
+.venv/
