@@ -1,0 +1,30 @@
+=== CROSS-EVALUATION ===
+model: cnn_configA.pt   evaluated on: data_width.npz
+samples: 1200
+
+Per-class metrics (trained on A, tested on B):
+              precision    recall  f1-score   support
+
+      normal      0.000     0.000     0.000       300
+      linear      0.485     1.000     0.654       300
+   geometric      1.000     1.000     1.000       300
+      random      1.000     0.940     0.969       300
+
+    accuracy                          0.735      1200
+   macro avg      0.621     0.735     0.656      1200
+weighted avg      0.621     0.735     0.656      1200
+
+Macro-F1 (cross): 0.656
+
+Confusion matrix (rows = true, cols = predicted):
+        normal  linear  geomet  random
+  normal      0     300       0       0
+  linear      0     300       0       0
+geometri      0       0     300       0
+  random      0      18       0     282
+
+Leech (low-rate) vs flood (high-rate) on the cross set:
+  leech (low) : n=450  accuracy=0.960  misread-as-normal=0.000
+  flood (high): n=450  accuracy=1.000  misread-as-normal=0.000
+
+saved cross_confusion_matrix.png
