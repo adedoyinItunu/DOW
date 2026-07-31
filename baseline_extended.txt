@@ -1,0 +1,44 @@
+=============== (1) LOGISTIC REGRESSION ACROSS SEEDS ===============
+  seed 0: macro-F1 0.983
+  seed 1: macro-F1 0.961
+  seed 2: macro-F1 0.961
+  seed 3: macro-F1 0.983
+  seed 4: macro-F1 0.978
+  seed 5: macro-F1 0.972
+  seed 6: macro-F1 0.972
+  seed 7: macro-F1 0.978
+  seed 8: macro-F1 0.967
+  seed 9: macro-F1 0.967
+
+  Logistic regression: 0.972 +/- 0.008 (range 0.961-0.983)
+  CNN (for comparison): 0.756 +/- 0.149 (range 0.525-0.960)
+
+=============== (2) LOGISTIC REGRESSION THROUGH THE LEECH SWEEP ===============
+leech_scale | accuracy | as_normal
+------------------------------------
+       1.00 |    0.973 |     0.027
+       0.70 |    0.762 |     0.224
+       0.50 |    0.542 |     0.409
+       0.30 |    0.351 |     0.636
+       0.20 |    0.213 |     0.662
+       0.10 |    0.002 |     0.736
+  (compare with the CNN sweep: 0.967 -> 0.000 as scale falls 1.0 -> 0.1)
+
+=============== (3) LOGISTIC REGRESSION ON CONFIG-B TRANSFER ===============
+              precision    recall  f1-score   support
+
+      normal      0.000     0.000     0.000       300
+      linear      0.598     0.357     0.447       300
+   geometric      1.000     0.477     0.646       300
+      random      0.342     1.000     0.509       300
+
+    accuracy                          0.458      1200
+   macro avg      0.485     0.458     0.400      1200
+weighted avg      0.485     0.458     0.400      1200
+
+  (compare with the CNN cross-config macro-F1 of 0.549, normal F1 0.000)
+
+Reading:
+  - LR higher AND more stable than CNN across seeds -> instability is the CNN's, not the data's.
+  - LR ALSO collapses at low leech intensity -> evasion threshold is a property of the TASK.
+  - LR ALSO fails on Config-B -> transfer failure is a property of the representation, not the CNN.

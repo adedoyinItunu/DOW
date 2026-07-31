@@ -1,0 +1,26 @@
+/home/ec2-user/environment/dows/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data.npz  seed: 42
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.972
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.900     1.000     0.947        45
+      linear      1.000     1.000     1.000        45
+   geometric      1.000     1.000     1.000        45
+      random      1.000     0.889     0.941        45
+
+    accuracy                          0.972       180
+   macro avg      0.975     0.972     0.972       180
+weighted avg      0.975     0.972     0.972       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
