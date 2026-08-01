@@ -1,0 +1,45 @@
+=== seed=0 extra=33 ===
+baseline train=840  ->  augmented train=939 (+99 leech)
+refined          0.468        0.794
+=== seed=0 extra=67 ===
+baseline train=840  ->  augmented train=1041 (+201 leech)
+refined          0.774        0.922
+=== seed=0 extra=200 ===
+baseline train=840  ->  augmented train=1440 (+600 leech)
+refined          0.984        0.994
+=== seed=1 extra=33 ===
+baseline train=840  ->  augmented train=939 (+99 leech)
+refined          0.730        0.722
+=== seed=1 extra=67 ===
+baseline train=840  ->  augmented train=1041 (+201 leech)
+refined          0.730        0.767
+=== seed=1 extra=200 ===
+baseline train=840  ->  augmented train=1440 (+600 leech)
+refined          0.778        0.822
+=== seed=2 extra=33 ===
+baseline train=840  ->  augmented train=939 (+99 leech)
+refined          0.698        0.894
+=== seed=2 extra=67 ===
+baseline train=840  ->  augmented train=1041 (+201 leech)
+refined          0.810        0.894
+=== seed=2 extra=200 ===
+baseline train=840  ->  augmented train=1440 (+600 leech)
+refined          0.762        0.650
+=== seed=3 extra=33 ===
+baseline train=840  ->  augmented train=939 (+99 leech)
+refined          0.603        0.850
+=== seed=3 extra=67 ===
+baseline train=840  ->  augmented train=1041 (+201 leech)
+refined          0.868        0.850
+=== seed=3 extra=200 ===
+baseline train=840  ->  augmented train=1440 (+600 leech)
+refined          0.971        0.644
+=== seed=4 extra=33 ===
+baseline train=840  ->  augmented train=939 (+99 leech)
+refined          0.200        0.694
+=== seed=4 extra=67 ===
+baseline train=840  ->  augmented train=1041 (+201 leech)
+refined          0.600        0.822
+=== seed=4 extra=200 ===
+baseline train=840  ->  augmented train=1440 (+600 leech)
+refined          0.923        0.972

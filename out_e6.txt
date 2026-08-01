@@ -1,0 +1,38 @@
+==================================================================
+EXPERIMENT 6: XAI of the failure mode
+==================================================================
+model: dow_cnn_locked.pt
+late columns defined as 23-29 (final week of the month)
+
+Config-B normal-class misclassification breakdown:
+  normal -> normal     :    0
+  normal -> linear     :   27
+  normal -> geometric  :  273  <-- dominant
+  normal -> random     :    0
+
+Analysing the dominant mode: normal -> geometric (273 samples)
+
+                         group |    n |  late-col share (mean +/- std)
+------------------------------------------------------------------------
+    B normal->geometric (FAIL) |   50 |             0.238 +/- 0.033
+            A normal (correct) |   50 |             0.273 +/- 0.028
+             genuine geometric |   50 |             0.420 +/- 0.074
+            leech (any attack) |   50 |             0.360 +/- 0.110
+            flood (any attack) |   50 |             0.308 +/- 0.065
+
+--- LaTeX table rows ---
+B normal$\rightarrow$geometric (FAIL) & 50 & $0.238 \pm 0.033$ \\
+A normal (correct) & 50 & $0.273 \pm 0.028$ \\
+genuine geometric & 50 & $0.420 \pm 0.074$ \\
+leech (any attack) & 50 & $0.360 \pm 0.110$ \\
+flood (any attack) & 50 & $0.308 \pm 0.065$ \\
+
+READING
+  If the FAILURE group's late-column attention resembles the
+  correct-normal group rather than the genuine-attack group, the
+  model is reacting to baseline intensity rather than to the
+  temporal structure that defines the attack class.
+  Check whether the standard deviations overlap before claiming a
+  difference - with n around 50 these are meaningful.
+
+saved e6_xai_failures.png

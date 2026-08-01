@@ -1,0 +1,9 @@
+baseline train=840  ->  augmented train=939 (+99 leech)
+
+=============== EXPERIMENT 4: refinement ===============
+                 leech-acc    overall-acc
+baseline         0.809        0.817
+refined          1.000        1.000
+change           +0.191        +0.183
+
+Verdict: leech detection improved without hurting overall accuracy (ok).

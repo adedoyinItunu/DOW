@@ -1,0 +1,5 @@
+saved e2_explanations.png
+
+METRIC 1  explanation agreement (IoU, top-10%): 0.062
+METRIC 2  SHAP consistency (mean std over 5 runs, lower=stabler): 0.0028
+METRIC 3  perturb-and-observe fidelity (mean prob drop, higher=better): 0.528

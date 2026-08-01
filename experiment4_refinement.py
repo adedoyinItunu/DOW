@@ -16,6 +16,7 @@ import argparse
 import numpy as np
 import torch
 import torch.nn as nn
+from dow_data import GenParams, _GEN
 from torch.utils.data import TensorDataset, DataLoader
 
 from dow_data import load_and_split, normalize, _GEN
@@ -28,7 +29,7 @@ def make_extra_leech(n_per_class, seed):
     X, y = [], []
     for c in [1, 2, 3]:
         for _ in range(n_per_class):
-            X.append(_GEN[c](rng, 1)[None, ...]); y.append(c)
+            X.append(_GEN[c](rng, 1, GenParams())[None, ...]); y.append(c)
     return normalize(np.asarray(X, dtype="float32")), np.asarray(y, dtype="int64")
 
 

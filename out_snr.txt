@@ -1,0 +1,76 @@
+======================================================================
+SIGNAL-TO-NOISE ANALYSIS OF THE LEECH INTENSITY SWEEP
+======================================================================
+samples per condition: 1000   seed: 42
+generator: amp=30.0 peak=13.0 width=3.5
+
+NOISE FLOOR (normal class, raw counts)
+  mean per-cell count      : 14.21
+  mean per-cell std        : 3.53
+  peak-hour cell mean      : 34.96
+  peak-hour cell std       : 6.12
+  whole-image noise ||s||  : 101.05
+
+======================================================================
+CLASS: linear  (leech, intensity=1)
+======================================================================
+ scale | total signal | matched-filter |  cells with |  peak cell
+       |     (counts) |  SNR (d-prime) |   S > sigma |        SNR
+----------------------------------------------------------------------
+  1.00 |       2210.8 |          21.88 |      29.2% |       2.58
+  0.70 |       1575.7 |          15.59 |      14.4% |       1.86
+  0.50 |       1126.4 |          11.15 |       3.9% |       1.36
+  0.30 |        678.9 |           6.72 |       0.0% |       0.90
+  0.20 |        461.6 |           4.57 |       0.0% |       0.57
+  0.10 |        230.8 |           2.28 |       0.0% |       0.32
+
+======================================================================
+CLASS: geometric  (leech, intensity=1)
+======================================================================
+ scale | total signal | matched-filter |  cells with |  peak cell
+       |     (counts) |  SNR (d-prime) |   S > sigma |        SNR
+----------------------------------------------------------------------
+  1.00 |       9562.4 |          94.63 |      60.0% |      29.27
+  0.70 |       6745.6 |          66.75 |      53.5% |      20.72
+  0.50 |       4758.6 |          47.09 |      46.8% |      14.34
+  0.30 |       2844.7 |          28.15 |      36.2% |       8.67
+  0.20 |       1874.9 |          18.55 |      28.2% |       5.61
+  0.10 |        962.4 |           9.52 |      14.0% |       2.89
+
+======================================================================
+CLASS: random  (leech, intensity=1)
+======================================================================
+ scale | total signal | matched-filter |  cells with |  peak cell
+       |     (counts) |  SNR (d-prime) |   S > sigma |        SNR
+----------------------------------------------------------------------
+  1.00 |       1372.6 |          13.58 |       7.5% |       1.53
+  0.70 |        949.4 |           9.40 |       0.3% |       1.02
+  0.50 |        691.9 |           6.85 |       0.0% |       0.82
+  0.30 |        411.7 |           4.07 |       0.0% |       0.54
+  0.20 |        276.3 |           2.73 |       0.0% |       0.38
+  0.10 |        143.4 |           1.42 |       0.0% |       0.29
+
+======================================================================
+HOW TO READ THIS
+======================================================================
+
+The matched-filter SNR (d-prime) is the detectability of the whole 24x30
+image, i.e. what a classifier with access to every cell could in principle
+exploit. It is the relevant quantity, not the per-cell SNR.
+
+  * If d' stays WELL ABOVE 1 at the scales where your detector collapses
+    (between 0.5 and 0.3), then the information is present and the detector
+    is failing to use it. The threshold is REPRESENTATIONAL or a property of
+    the models tested -- your current claim stands.
+
+  * If d' falls to around 1 at those same scales, the signal has dropped
+    into the noise and no detector could recover it. The threshold is
+    INFORMATIONAL -- a property of the detection problem. Your finding is
+    still real and better grounded, but Sections 4.6 and 5.3 must be
+    reworded: it is not the heat-map representation that imposes the limit.
+
+Note also that the model sees log1p-normalised values, which compress large
+counts more than small ones. The raw-count SNR computed here is therefore an
+UPPER BOUND on what the model has access to. If d' is already near 1 in raw
+counts, it is worse after normalisation.
+

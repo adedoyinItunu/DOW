@@ -1,0 +1,25 @@
+model: dow_cnn_locked.pt   seed: 42   n=180
+accuracy: 0.817   macro-F1: 0.788
+
+              precision    recall  f1-score   support
+
+      normal      1.000     1.000     1.000        45
+      linear      1.000     0.267     0.421        45
+   geometric      0.577     1.000     0.732        45
+      random      1.000     1.000     1.000        45
+
+    accuracy                          0.817       180
+   macro avg      0.894     0.817     0.788       180
+weighted avg      0.894     0.817     0.788       180
+
+
+confusion matrix (rows=true, cols=pred):
+[[45  0  0  0]
+ [ 0 12 33  0]
+ [ 0  0 45  0]
+ [ 0  0  0 45]]
+
+wrote e1_confusion_matrix.png
+
+Suggested caption:
+\caption{Confusion matrix on the held-out test split for the locked checkpoint (\texttt{dow\_cnn\_locked.pt}, seed 42). Accuracy 0.817, macro-F1 0.788.}

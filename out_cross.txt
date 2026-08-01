@@ -1,0 +1,30 @@
+=== CROSS-EVALUATION ===
+model: dow_cnn_locked.pt   evaluated on: data_configB.npz
+samples: 1200
+
+Per-class metrics (trained on A, tested on B):
+              precision    recall  f1-score   support
+
+      normal      0.000     0.000     0.000       300
+      linear      0.036     0.003     0.006       300
+   geometric      0.294     1.000     0.454       300
+      random      1.000     0.500     0.667       300
+
+    accuracy                          0.376      1200
+   macro avg      0.332     0.376     0.282      1200
+weighted avg      0.332     0.376     0.282      1200
+
+Macro-F1 (cross): 0.282
+
+Confusion matrix (rows = true, cols = predicted):
+        normal  linear  geomet  random
+  normal      0      27     273       0
+  linear      0       1     299       0
+geometri      0       0     300       0
+  random      0       0     150     150
+
+Leech (low-rate) vs flood (high-rate) on the cross set:
+  leech (low) : n=450  accuracy=0.333  misread-as-normal=0.000
+  flood (high): n=450  accuracy=0.669  misread-as-normal=0.000
+
+saved cross_confusion_matrix.png

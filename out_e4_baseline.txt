@@ -1,0 +1,15 @@
+=== seed=0 ===
+baseline train=840  ->  augmented train=843 (+3 leech)
+refined          0.177        0.661
+=== seed=1 ===
+baseline train=840  ->  augmented train=843 (+3 leech)
+refined          0.683        0.750
+=== seed=2 ===
+baseline train=840  ->  augmented train=843 (+3 leech)
+refined          0.952        0.983
+=== seed=3 ===
+baseline train=840  ->  augmented train=843 (+3 leech)
+refined          0.603        0.750
+=== seed=4 ===
+baseline train=840  ->  augmented train=843 (+3 leech)
+refined          0.554        0.839

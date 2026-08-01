@@ -1,0 +1,53 @@
+========================================================================
+DOES PER-IMAGE NORMALISATION FIX THE TRANSFER FAILURE?
+========================================================================
+train on data_configA.npz (1200 samples)
+test on  data_configB.npz (1200 samples)
+seeds: [0, 1, 2, 3, 4]
+
+------------------------------------------------------------------------
+SCHEME: fixed log1p(400)
+  cross-config macro-F1 : 0.421 +/- 0.156
+  NORMAL-class F1       : 0.000 +/- 0.000
+  last-seed confusion matrix (rows=true, cols=pred):
+      normal   linear geometri   random
+  normal         0      300        0        0
+  linear         0      300        0        0
+geometri         0       39      261        0
+  random         0        2        0      298
+
+------------------------------------------------------------------------
+SCHEME: per-image max
+  cross-config macro-F1 : 0.562 +/- 0.063
+  NORMAL-class F1       : 0.246 +/- 0.320
+  last-seed confusion matrix (rows=true, cols=pred):
+      normal   linear geometri   random
+  normal       297        3        0        0
+  linear        10      290        0        0
+geometri         0      191      109        0
+  random       149        1        0      150
+
+------------------------------------------------------------------------
+SCHEME: per-image robust
+  cross-config macro-F1 : 0.887 +/- 0.057
+  NORMAL-class F1       : 0.783 +/- 0.152
+  last-seed confusion matrix (rows=true, cols=pred):
+      normal   linear geometri   random
+  normal       105      195        0        0
+  linear         0      300        0        0
+geometri         0       31      269        0
+  random         6        6        0      288
+
+========================================================================
+VERDICT
+========================================================================
+              scheme |         macro-F1 |    normal-class F1
+--------------------------------------------------------------
+    fixed log1p(400) |   0.421 +/- 0.156 |     0.000 +/- 0.000
+       per-image max |   0.562 +/- 0.063 |     0.246 +/- 0.320
+    per-image robust |   0.887 +/- 0.057 |     0.783 +/- 0.152
+
+CLAIM SUPPORTED. Normal-class F1 recovers from 0.000 to 0.783 under 'per-image robust'.
+The fixed-constant normalisation is demonstrably the cause of
+the transfer failure. Sections 4.7 and 5.1 can state this as a
+tested result rather than an inference.
