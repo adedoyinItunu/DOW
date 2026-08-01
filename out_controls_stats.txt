@@ -1,0 +1,41 @@
+========================================================================
+XAI CONTROLS WITH SIGNIFICANCE TESTING
+========================================================================
+model: dow_cnn_locked.pt   images: 50   top fraction: 10%   fill: zero
+
+------------------------------------------------------------------------
+CONTROL 1: fidelity against random occlusion (paired)
+------------------------------------------------------------------------
+  Grad-CAM guided : 0.252 +/- 0.307
+  random          : 0.440 +/- 0.393
+  paired difference (guided - random): -0.188 +/- 0.281
+  images where guided > random: 13 of 50
+
+  Wilcoxon signed-rank (two-sided): W = 198.0, p = 7.52e-06
+  Wilcoxon, H1: guided < random  : p = 3.76e-06
+  paired t-test (two-sided)      : t = -4.732, p = 1.93e-05
+  rank-biserial correlation      : -0.480
+
+  => The guided drop is SIGNIFICANTLY SMALLER than random.
+     The attribution does not identify the regions the
+     prediction depends on. Report this plainly.
+
+------------------------------------------------------------------------
+CONTROL 2: saliency--Grad-CAM IoU at matched resolution
+------------------------------------------------------------------------
+  Grad-CAM native resolution : 12x15
+  IoU at 24x30               : 0.059 +/- 0.023
+  IoU at 12x15 (matched)     : 0.071 +/- 0.045
+  chance expectation         : 0.053
+  Wilcoxon, native vs matched: p = 0.066
+  Wilcoxon, matched > chance : p = 0.003
+
+========================================================================
+LaTeX
+========================================================================
+Grad-CAM top decile & $0.252 \pm 0.307$ \\
+Random 10\% (control) & $0.440 \pm 0.393$ \\
+IoU, $24\times30$ & $0.059 \pm 0.023$ \\
+IoU, $12\times15$ matched & $0.071 \pm 0.045$ \\
+
+Sentence: ``a Wilcoxon signed-rank test over 50 paired measurements gives $p = 7.5e-06$''

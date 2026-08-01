@@ -1,0 +1,37 @@
+======================================================================
+XAI CONTROLS
+======================================================================
+model: dow_cnn_locked.pt   images: 50   top fraction: 10%
+
+----------------------------------------------------------------------
+CONTROL 1: fidelity against a random-occlusion baseline
+----------------------------------------------------------------------
+  Grad-CAM guided occlusion : 0.252 +/- 0.304
+  random occlusion          : 0.440 +/- 0.389
+  difference                : -0.188
+  ratio                     : 0.57x
+
+  => The guided drop is NOT clearly above random. The fidelity
+     figure is not evidence of a faithful explanation. Report
+     both and state the limitation plainly.
+
+----------------------------------------------------------------------
+CONTROL 2: saliency-Grad-CAM IoU at matched resolution
+----------------------------------------------------------------------
+  Grad-CAM native resolution : 12x15
+  IoU at 24x30 (as reported) : 0.059 +/- 0.023
+  IoU at 12x15 (matched)      : 0.071 +/- 0.045
+  expected under chance      : 0.053
+
+  => Agreement does not rise at matched resolution.
+     The resolution difference does NOT explain the
+     disagreement, which supports the current Section 4.3
+     claim -- now tested rather than asserted.
+
+======================================================================
+LaTeX rows
+======================================================================
+Grad-CAM guided occlusion & $0.252 \pm 0.304$ \\
+Random occlusion (control) & $0.440 \pm 0.389$ \\
+IoU, $24\times30$ & $0.059 \pm 0.023$ \\
+IoU, $12\times15$ matched & $0.071 \pm 0.045$ \\
