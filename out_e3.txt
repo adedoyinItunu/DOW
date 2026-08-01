@@ -1,0 +1,9 @@
+
+=============== EXPERIMENT 3: leech vs flood ===============
+leech   n= 68  accuracy=0.809  misread-as-normal=0.000
+flood   n= 67  accuracy=0.701  misread-as-normal=0.000
+
+Gap: flood is -0.107 more accurate than leech; leech is hidden in normal +0.000 more often.
+Interpretation: the low-rate leech is the harder case -- it looks like normal traffic, which is the whole motivation for the XAI analysis.
+
+saved e3_leech_vs_flood.png
