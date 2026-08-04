@@ -1,0 +1,27 @@
+seed 0: done
+seed 1: done
+seed 2: done
+seed 3: done
+seed 4: done
+
+=============== LR LEECH SWEEP ACROSS 5 SEEDS ===============
+ scale |   LR accuracy (mean +/- std) |   as_normal (mean +/- std)
+------------------------------------------------------------------
+  1.00 |        0.922 +/- 0.010       |      0.077 +/- 0.009      
+  0.70 |        0.781 +/- 0.007       |      0.200 +/- 0.007      
+  0.50 |        0.552 +/- 0.019       |      0.389 +/- 0.017      
+  0.30 |        0.330 +/- 0.006       |      0.633 +/- 0.006      
+  0.20 |        0.216 +/- 0.011       |      0.657 +/- 0.005      
+  0.10 |        0.000 +/- 0.000       |      0.708 +/- 0.011      
+
+Compare the std column with the CNN multi-seed sweep. If LR's std is
+much smaller, the threshold is stable in the linear model and the CNN's
+variance is the CNN's instability, not the task's.
+
+--- LaTeX rows ---
+1.00 & $0.922 \pm 0.010$ \\
+0.70 & $0.781 \pm 0.007$ \\
+0.50 & $0.552 \pm 0.019$ \\
+0.30 & $0.330 \pm 0.006$ \\
+0.20 & $0.216 \pm 0.011$ \\
+0.10 & $0.000 \pm 0.000$ \\

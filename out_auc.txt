@@ -1,0 +1,20 @@
+Separability of normal vs leech by mean pixel value alone
+(no model; AUC 0.5 = indistinguishable, 1.0 = perfectly separable)
+
+ leech scale |  AUC mean |    std | n_normal | n_leech
+------------------------------------------------------------
+        1.00 |     1.000 |  0.000 |      300 |     450
+        0.70 |     0.999 |  0.001 |      300 |     450
+        0.50 |     0.995 |  0.002 |      300 |     450
+        0.30 |     0.966 |  0.005 |      300 |     450
+        0.20 |     0.928 |  0.007 |      300 |     450
+        0.10 |     0.846 |  0.015 |      300 |     450
+
+Reading:
+  AUC stays high as scale falls -> the leech/normal distributions remain
+    separable on a single scalar, so the detectors' collapse is a failure
+    to use available information (supports the Section 5.3 reading).
+  AUC falls toward 0.5 alongside detection -> the distributions genuinely
+    overlap, and the evasion threshold reflects the task, not the detectors.
+
+Either outcome resolves the limitation stated in Section 5.6.

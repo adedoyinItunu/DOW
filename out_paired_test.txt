@@ -1,0 +1,26 @@
+ seed |  CNN macro-F1 |  LR macro-F1 |    diff
+--------------------------------------------------
+    0 |         0.960 |        0.983 |   0.023
+    1 |         0.578 |        0.961 |   0.383
+    2 |         0.605 |        0.961 |   0.356
+    3 |         0.877 |        0.983 |   0.106
+    4 |         0.870 |        0.978 |   0.108
+    5 |         0.866 |        0.972 |   0.106
+    6 |         0.644 |        0.972 |   0.328
+    7 |         0.735 |        0.978 |   0.243
+    8 |         0.896 |        0.967 |   0.071
+    9 |         0.525 |        0.967 |   0.442
+
+==================================================
+CNN : 0.756 +/- 0.149 (range 0.525-0.960)
+LR  : 0.972 +/- 0.008 (range 0.961-0.983)
+
+Wilcoxon signed-rank, paired over 10 seeds:
+  statistic W = 0.0
+  p = 0.00195
+  LR exceeds CNN on 10 of 10 seeds
+
+Sentence for Section 4.2.1:
+  A Wilcoxon signed-rank test over the ten paired seeds confirms the
+  difference is significant (W = 0.0, p = 0.0020), with the linear
+  model exceeding the convolutional one on 10 of 10 partitions.
