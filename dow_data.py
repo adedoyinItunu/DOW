@@ -22,8 +22,11 @@ GENERATOR PARAMETERS (for the robustness experiment)
 --------------------------------------------------------------------------------
 The traffic-generation parameters are exposed as command-line flags so that a
 second, DIFFERENT configuration can be produced for a train-on-A / test-on-B
-robustness test. The DEFAULTS reproduce the original generator exactly, so all
-existing results are unchanged when no flags are passed.
+robustness test. The DEFAULTS select the L-ramp condition, in which all
+originally reported results were obtained. Note that they do not byte-for-byte
+reproduce the pre-L-const generator: adding the unconditional `onset` draw
+shifted the random stream, so default output is a different realisation of the
+same distribution. See thesis Section 3.8.2.
 
     peak_hour   diurnal peak (default 13.0)      --peak-hour
     width       diurnal spread (default 3.5)     --width
@@ -61,10 +64,15 @@ Two definitions of the `linear` class are supported, selected by --linear-const.
           reintroduce the confusion this condition exists to remove. Capping
           onset at day 15 guarantees at least 16 active days.
 
-    `onset` is drawn unconditionally, in BOTH branches, so that the two
-    conditions consume the RNG stream identically. This keeps the `normal`,
-    `geometric` and `random` classes bit-for-bit identical between the two
-    datasets, so the comparison isolates the linear class alone.
+    `onset` is drawn unconditionally in BOTH branches so that the two
+    conditions consume the same number of draws at that point. This is not
+    sufficient for bit-identity: rng.poisson() consumes a variable number of
+    underlying draws depending on its rate, so the stream desynchronises at
+    the first `linear` sample. In practice `normal` (generated first) is
+    bit-identical between the two datasets, while `geometric` and `random`
+    are drawn from identical distributions but not identical random states,
+    with aggregate totals differing by under 0.5%. This is a difference of
+    realisation, not of distribution. See thesis Section 3.2.1.
 
 Run:
     python dow_data.py --per-class 300 --out data.npz              # Config A (default)
@@ -93,6 +101,9 @@ class GenParams:
     leech_scale: float = 1.0
     flood_scale: float = 1.0
     linear_const: bool = False   # False = L-ramp (as submitted); True = L-const (DoWTS)
+    weekly_shape: str = "square"   # "square" (as implemented) | "sinusoid" (DoWTS)
+    weekly_amp: float = 0.15       # sinusoid amplitude; ignored when shape="square"
+    weekly_phase: float = 3.75     # peaks mid-weekend (days 5-6), as DoWTS describes
 
 
 def normalize(x):
@@ -104,7 +115,13 @@ def _diurnal_base(rng, p: GenParams):
     hours = np.arange(HOURS)[:, None]
     days = np.arange(DAYS)[None, :]
     daily = 0.15 + np.exp(-((hours - p.peak_hour) ** 2) / (2 * p.width ** 2))
-    weekly = np.where(np.isin(days % 7, [5, 6]), p.weekend, 1.0)
+    if p.weekly_shape == "sinusoid":
+        # DoWTS adds a 7-day sinusoid representing INCREASED weekend traffic.
+        # The square variant below instead REDUCES it: thesis Section 5.5.2.
+        weekly = 1.0 + p.weekly_amp * np.sin(
+            2 * np.pi * (days - p.weekly_phase) / 7.0)
+    else:
+        weekly = np.where(np.isin(days % 7, [5, 6]), p.weekend, 1.0)
     return rng.poisson(p.amp * daily * weekly).astype("float32")
 
 
@@ -253,6 +270,11 @@ def main():
     ap.add_argument("--width", type=float, default=3.5, help="diurnal spread")
     ap.add_argument("--amp", type=float, default=30.0, help="base amplitude")
     ap.add_argument("--weekend", type=float, default=0.7, help="weekend factor")
+    ap.add_argument("--weekly-shape", choices=["square", "sinusoid"], default="square",
+                    help="square = as implemented (lowers weekend load); "
+                         "sinusoid = DoWTS-faithful (raises it)")
+    ap.add_argument("--weekly-amp", type=float, default=0.15,
+                    help="sinusoid amplitude (ignored when --weekly-shape square)")
     ap.add_argument("--leech-scale", type=float, default=1.0, help="multiplier on leech rates")
     ap.add_argument("--flood-scale", type=float, default=1.0, help="multiplier on flood rates")
     ap.add_argument("--linear-const", action="store_true",
@@ -261,7 +283,8 @@ def main():
     args = ap.parse_args()
 
     params = GenParams(peak_hour=args.peak_hour, width=args.width, amp=args.amp,
-                       weekend=args.weekend, leech_scale=args.leech_scale,
+                       weekend=args.weekend, weekly_shape=args.weekly_shape,
+                       weekly_amp=args.weekly_amp, leech_scale=args.leech_scale,
                        flood_scale=args.flood_scale, linear_const=args.linear_const)
 
     if args.preview:
@@ -275,6 +298,7 @@ def main():
           f"intensity(0/1/2)={np.bincount(inten).tolist()}")
     print(f"  params: peak_hour={params.peak_hour} width={params.width} "
           f"amp={params.amp} weekend={params.weekend} "
+          f"weekly_shape={params.weekly_shape} weekly_amp={params.weekly_amp} "
           f"leech_scale={params.leech_scale} flood_scale={params.flood_scale} "
           f"linear_const={params.linear_const}")
 
