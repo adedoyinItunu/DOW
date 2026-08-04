@@ -23,6 +23,16 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+# dow_data stores RAW COUNTS in the .npz; normalisation is applied at load time
+# by dow_data.normalize(). Import it so the figure shows the values the model
+# actually sees.
+try:
+    from dow_data import normalize
+except ImportError:
+    _NORM_REF = np.log1p(400.0)
+    def normalize(x):
+        return (np.log1p(np.clip(x, 0, None)) / _NORM_REF).astype("float32")
+
 CLASS_NAMES = ["normal", "linear", "geometric", "random"]
 
 # Candidate key names, in order of preference. The script prints whatever it
@@ -72,6 +82,10 @@ def main():
         X = X[:, 0]
     if X.shape[1:] != (24, 30):
         sys.exit(f"Expected images of shape (24,30), got {X.shape[1:]}.")
+
+    if X.max() > 1.5:                      # raw counts as stored by dow_data.py
+        X = normalize(X)
+        print("applied dow_data.normalize() to raw counts")
 
     rng = np.random.default_rng(args.seed)
 
