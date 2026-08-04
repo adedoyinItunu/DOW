@@ -1,23 +1,23 @@
 /home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
   warnings.warn(
 =============== BASELINE COMPARISON ===============
-data: data_lconst.npz  seed: 0
+data: data_lramp.npz  seed: 0
 train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
 
 1. Majority-class baseline   macro-F1: 0.100
-2. Logistic reg (raw pixels) macro-F1: 0.914
+2. Logistic reg (raw pixels) macro-F1: 0.983
 
    Logistic-regression per-class:
               precision    recall  f1-score   support
 
-      normal      0.918     1.000     0.957        45
-      linear      0.827     0.956     0.887        45
+      normal      0.938     1.000     0.968        45
+      linear      1.000     1.000     1.000        45
    geometric      1.000     1.000     1.000        45
-      random      0.941     0.711     0.810        45
+      random      1.000     0.933     0.966        45
 
-    accuracy                          0.917       180
-   macro avg      0.922     0.917     0.914       180
-weighted avg      0.922     0.917     0.914       180
+    accuracy                          0.983       180
+   macro avg      0.984     0.983     0.983       180
+weighted avg      0.984     0.983     0.983       180
 
 Compare against the CNN ten-seed macro-F1 on the SAME dataset
 (perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN

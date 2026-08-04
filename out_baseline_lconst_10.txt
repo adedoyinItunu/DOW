@@ -19,8 +19,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.922     0.917     0.914       180
 weighted avg      0.922     0.917     0.914       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -45,8 +45,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.898     0.900     0.898       180
 weighted avg      0.898     0.900     0.898       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -71,8 +71,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.909     0.906     0.902       180
 weighted avg      0.909     0.906     0.902       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -97,8 +97,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.929     0.922     0.919       180
 weighted avg      0.929     0.922     0.919       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -123,8 +123,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.917     0.911     0.907       180
 weighted avg      0.917     0.911     0.907       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -149,8 +149,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.919     0.917     0.914       180
 weighted avg      0.919     0.917     0.914       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -175,8 +175,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.938     0.933     0.931       180
 weighted avg      0.938     0.933     0.931       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -201,8 +201,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.912     0.911     0.908       180
 weighted avg      0.912     0.911     0.908       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -227,8 +227,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.921     0.911     0.906       180
 weighted avg      0.921     0.911     0.906       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.
@@ -253,8 +253,8 @@ train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
    macro avg      0.929     0.922     0.919       180
 weighted avg      0.929     0.922     0.919       180
 
-For comparison, the CNN reaches macro-F1 ~0.955 (single representative
-run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+Compare against the CNN ten-seed macro-F1 on the SAME dataset
+(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN
 clearly exceeds both baselines, it is learning structure the trivial
 models cannot; if logistic regression is close, the task is largely
 linearly separable and the CNN's added value is modest.

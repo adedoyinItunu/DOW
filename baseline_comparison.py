@@ -50,8 +50,8 @@ def main():
     print("\n   Logistic-regression per-class:")
     print(classification_report(yte, p_lr, target_names=names, digits=3, zero_division=0))
 
-    print("For comparison, the CNN reaches macro-F1 ~0.955 (single representative")
-    print("run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN")
+    print("Compare against the CNN ten-seed macro-F1 on the SAME dataset")
+    print("(perclass_across_seeds.py): 0.759 +/- 0.169 L-ramp, 0.877 +/- 0.126 L-const. If the CNN")
     print("clearly exceeds both baselines, it is learning structure the trivial")
     print("models cannot; if logistic regression is close, the task is largely")
     print("linearly separable and the CNN's added value is modest.")
