@@ -32,10 +32,46 @@ existing results are unchanged when no flags are passed.
     leech_scale multiplier on leech rates (1.0)  --leech-scale
     flood_scale multiplier on flood rates (1.0)  --flood-scale
 
+--------------------------------------------------------------------------------
+LINEAR CLASS TEMPORAL SHAPE (--linear-const)
+--------------------------------------------------------------------------------
+Two definitions of the `linear` class are supported, selected by --linear-const.
+
+    L-ramp   (default, linear_const=False)
+        The injected hourly rate RAMPS across the month. This is the definition
+        used for all originally reported results.
+
+    L-const  (linear_const=True)
+        The injected hourly rate is CONSTANT from a random onset day to the end
+        of the month, so the CUMULATIVE total rises linearly while the hourly
+        rate stays flat. This follows the DoWTS specification of the first
+        attack pattern.
+
+    Two implementation choices are made here and must be reported as such:
+      (a) LOAD MATCHING. The constant-rate variant injects the same TOTAL load
+          as the ramp variant it replaces, so that only the temporal SHAPE
+          differs between the two conditions and any performance difference is
+          attributable to shape rather than volume. DoWTS itself does not
+          load-match (its rate follows from bot count, so the total depends on
+          duration).
+      (b) ONSET RANGE. Onset is drawn uniformly from the first half of the
+          month. Under load matching, a very late onset would compress the whole
+          month's load into a handful of days and produce a late-month spike --
+          i.e. something resembling the `geometric` class -- which would
+          reintroduce the confusion this condition exists to remove. Capping
+          onset at day 15 guarantees at least 16 active days.
+
+    `onset` is drawn unconditionally, in BOTH branches, so that the two
+    conditions consume the RNG stream identically. This keeps the `normal`,
+    `geometric` and `random` classes bit-for-bit identical between the two
+    datasets, so the comparison isolates the linear class alone.
+
 Run:
     python dow_data.py --per-class 300 --out data.npz              # Config A (default)
     python dow_data.py --per-class 300 --peak-hour 10 --width 5.0 \
                        --amp 45 --out data_configB.npz             # Config B (alternative)
+    python dow_data.py --per-class 300 --linear-const \
+                       --out data_lconst.npz                       # L-const condition
     python dow_data.py --preview                                   # save a preview PNG
 """
 import argparse
@@ -56,6 +92,7 @@ class GenParams:
     weekend: float = 0.7
     leech_scale: float = 1.0
     flood_scale: float = 1.0
+    linear_const: bool = False   # False = L-ramp (as submitted); True = L-const (DoWTS)
 
 
 def normalize(x):
@@ -81,14 +118,36 @@ def _gen_normal(rng, intensity, p: GenParams):
 
 
 def _gen_linear(rng, intensity, p: GenParams):
+    """
+    Linear attack class, in one of two temporal shapes (see module docstring).
+
+    L-ramp  (p.linear_const is False):  injected hourly rate ramps across month.
+    L-const (p.linear_const is True):   injected hourly rate constant from onset,
+                                        load-matched to the ramp it replaces.
+    """
     g = _diurnal_base(rng, p)
     days = np.arange(DAYS)[None, :]
-    if intensity == 1:                       # leech: subtle, hidden in the daily shape
+    ramp = days / (DAYS - 1)                     # 0 -> 1 across the month
+
+    if intensity == 1:                           # leech: subtle, hidden in the daily shape
         slope = rng.uniform(8, 16) * p.leech_scale
-        extra = _envelope(p) * (days / (DAYS - 1)) * slope
-    else:                                    # flood: obvious ramp
+        shape = _envelope(p)
+    else:                                        # flood: uniform across hours
         slope = rng.uniform(35, 60) * p.flood_scale
-        extra = (days / (DAYS - 1)) * slope
+        shape = 1.0
+
+    # Drawn in BOTH branches so the two conditions consume the RNG identically.
+    onset = int(rng.integers(0, DAYS // 2))
+
+    if p.linear_const:                           # DoWTS: constant rate from onset
+        active = DAYS - onset
+        rate = ramp.sum() * slope / active       # load-matched to the ramp variant
+        profile = np.zeros((1, DAYS))
+        profile[0, onset:] = rate
+        extra = shape * profile
+    else:                                        # original: ramp in the hourly rate
+        extra = shape * ramp * slope
+
     return g + rng.poisson(np.clip(extra, 0, None)).astype("float32")
 
 
@@ -175,7 +234,8 @@ def save_preview(path="data_preview.png", seed=1, params: GenParams = None):
         ax.imshow(_GEN[c](rng, lvl, params), origin="lower", aspect="auto", cmap="magma")
         ax.set_title(title, fontsize=9, fontweight="bold")
         ax.set_xticks([]); ax.set_yticks([])
-    fig.suptitle("Four-class DoW heat-maps (leech = low-rate, flood = high-rate)",
+    mode = "L-const (DoWTS constant-rate)" if params.linear_const else "L-ramp (as submitted)"
+    fig.suptitle(f"Four-class DoW heat-maps (leech = low-rate, flood = high-rate)  --  {mode}",
                  fontsize=12, fontweight="bold")
     fig.tight_layout(rect=[0, 0, 1, 0.92])
     fig.savefig(path, dpi=130, bbox_inches="tight"); plt.close(fig)
@@ -195,11 +255,14 @@ def main():
     ap.add_argument("--weekend", type=float, default=0.7, help="weekend factor")
     ap.add_argument("--leech-scale", type=float, default=1.0, help="multiplier on leech rates")
     ap.add_argument("--flood-scale", type=float, default=1.0, help="multiplier on flood rates")
+    ap.add_argument("--linear-const", action="store_true",
+                    help="linear class as a load-matched constant-rate lift from a random "
+                         "onset (DoWTS-faithful) instead of a ramp in the hourly rate")
     args = ap.parse_args()
 
     params = GenParams(peak_hour=args.peak_hour, width=args.width, amp=args.amp,
                        weekend=args.weekend, leech_scale=args.leech_scale,
-                       flood_scale=args.flood_scale)
+                       flood_scale=args.flood_scale, linear_const=args.linear_const)
 
     if args.preview:
         save_preview(params=params); return
@@ -212,7 +275,8 @@ def main():
           f"intensity(0/1/2)={np.bincount(inten).tolist()}")
     print(f"  params: peak_hour={params.peak_hour} width={params.width} "
           f"amp={params.amp} weekend={params.weekend} "
-          f"leech_scale={params.leech_scale} flood_scale={params.flood_scale}")
+          f"leech_scale={params.leech_scale} flood_scale={params.flood_scale} "
+          f"linear_const={params.linear_const}")
 
 
 if __name__ == "__main__":

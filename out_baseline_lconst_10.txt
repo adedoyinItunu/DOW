@@ -1,0 +1,260 @@
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 0
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.914
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.918     1.000     0.957        45
+      linear      0.827     0.956     0.887        45
+   geometric      1.000     1.000     1.000        45
+      random      0.941     0.711     0.810        45
+
+    accuracy                          0.917       180
+   macro avg      0.922     0.917     0.914       180
+weighted avg      0.922     0.917     0.914       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 1
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.898
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.900     1.000     0.947        45
+      linear      0.848     0.867     0.857        45
+   geometric      1.000     1.000     1.000        45
+      random      0.846     0.733     0.786        45
+
+    accuracy                          0.900       180
+   macro avg      0.898     0.900     0.898       180
+weighted avg      0.898     0.900     0.898       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 2
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.902
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.865     1.000     0.928        45
+      linear      0.857     0.933     0.894        45
+   geometric      1.000     1.000     1.000        45
+      random      0.912     0.689     0.785        45
+
+    accuracy                          0.906       180
+   macro avg      0.909     0.906     0.902       180
+weighted avg      0.909     0.906     0.902       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 3
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.919
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.882     1.000     0.938        45
+      linear      0.863     0.978     0.917        45
+   geometric      1.000     1.000     1.000        45
+      random      0.970     0.711     0.821        45
+
+    accuracy                          0.922       180
+   macro avg      0.929     0.922     0.919       180
+weighted avg      0.929     0.922     0.919       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 4
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.907
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.849     1.000     0.918        45
+      linear      0.878     0.956     0.915        45
+   geometric      1.000     1.000     1.000        45
+      random      0.939     0.689     0.795        45
+
+    accuracy                          0.911       180
+   macro avg      0.917     0.911     0.907       180
+weighted avg      0.917     0.911     0.907       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 5
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.914
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.938     1.000     0.968        45
+      linear      0.824     0.933     0.875        45
+   geometric      1.000     1.000     1.000        45
+      random      0.917     0.733     0.815        45
+
+    accuracy                          0.917       180
+   macro avg      0.919     0.917     0.914       180
+weighted avg      0.919     0.917     0.914       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 6
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.931
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.882     1.000     0.938        45
+      linear      0.898     0.978     0.936        45
+   geometric      1.000     1.000     1.000        45
+      random      0.971     0.756     0.850        45
+
+    accuracy                          0.933       180
+   macro avg      0.938     0.933     0.931       180
+weighted avg      0.938     0.933     0.931       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 7
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.908
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.882     1.000     0.938        45
+      linear      0.872     0.911     0.891        45
+   geometric      1.000     1.000     1.000        45
+      random      0.892     0.733     0.805        45
+
+    accuracy                          0.911       180
+   macro avg      0.912     0.911     0.908       180
+weighted avg      0.912     0.911     0.908       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 8
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.906
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.900     1.000     0.947        45
+      linear      0.815     0.978     0.889        45
+   geometric      1.000     1.000     1.000        45
+      random      0.968     0.667     0.789        45
+
+    accuracy                          0.911       180
+   macro avg      0.921     0.911     0.906       180
+weighted avg      0.921     0.911     0.906       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.
+/home/ec2-user/environment/DOW-lconst/.venv/lib64/python3.9/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+=============== BASELINE COMPARISON ===============
+data: data_lconst.npz  seed: 9
+train 840  test 180  classes ['normal', 'linear', 'geometric', 'random']
+
+1. Majority-class baseline   macro-F1: 0.100
+2. Logistic reg (raw pixels) macro-F1: 0.919
+
+   Logistic-regression per-class:
+              precision    recall  f1-score   support
+
+      normal      0.865     1.000     0.928        45
+      linear      0.880     0.978     0.926        45
+   geometric      1.000     1.000     1.000        45
+      random      0.970     0.711     0.821        45
+
+    accuracy                          0.922       180
+   macro avg      0.929     0.922     0.919       180
+weighted avg      0.929     0.922     0.919       180
+
+For comparison, the CNN reaches macro-F1 ~0.955 (single representative
+run) and 0.756 +/- 0.149 across partition-varying seeds. If the CNN
+clearly exceeds both baselines, it is learning structure the trivial
+models cannot; if logistic regression is close, the task is largely
+linearly separable and the CNN's added value is modest.

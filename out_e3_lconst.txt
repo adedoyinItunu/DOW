@@ -1,0 +1,15 @@
+
+=============== EXPERIMENT 3: leech vs flood ===============
+leech   n= 66  accuracy=0.985  misread-as-normal=0.015
+flood   n= 69  accuracy=1.000  misread-as-normal=0.000
+
+Gap: flood is +0.015 more accurate than leech; leech is hidden in normal +0.015 more often.
+Interpretation: the low-rate leech is the harder case -- it looks like normal traffic, which is the whole motivation for the XAI analysis.
+Traceback (most recent call last):
+  File "/home/ec2-user/environment/DOW-lconst/experiment3_leech_vs_flood.py", line 75, in <module>
+    main()
+  File "/home/ec2-user/environment/DOW-lconst/experiment3_leech_vs_flood.py", line 63, in main
+    axes[1, col].imshow(gradcam_map(model, x, t), origin="lower", aspect="auto", cmap="jet")
+  File "/home/ec2-user/environment/DOW-lconst/experiment2_xai.py", line 40, in gradcam_map
+    from captum.attr import LayerGradCam, LayerAttribution
+ModuleNotFoundError: No module named 'captum'

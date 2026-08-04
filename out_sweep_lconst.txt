@@ -1,0 +1,28 @@
+seed 0: model trained
+seed 1: model trained
+seed 2: model trained
+seed 3: model trained
+seed 4: model trained
+
+=============== LEECH-INTENSITY SWEEP ACROSS 5 SEEDS ===============
+ scale |    accuracy (mean +/- std) |   as_normal (mean +/- std)
+------------------------------------------------------------------
+  1.00 |      0.624 +/- 0.271       |      0.256 +/- 0.152      
+  0.70 |      0.499 +/- 0.288       |      0.351 +/- 0.168      
+  0.50 |      0.385 +/- 0.215       |      0.425 +/- 0.130      
+  0.30 |      0.136 +/- 0.117       |      0.620 +/- 0.175      
+  0.20 |      0.062 +/- 0.105       |      0.753 +/- 0.189      
+  0.10 |      0.026 +/- 0.050       |      0.913 +/- 0.108      
+
+Reading: report these mean +/- std figures in place of the single-seed
+sweep table. The evasion threshold (accuracy < 0.5, majority read as
+normal) can then be stated with the same evidential standard as the rest
+of the results chapter.
+
+--- LaTeX table rows (accuracy mean +/- std, as_normal mean) ---
+1.00 & $0.624 \pm 0.271$ & $0.256 \pm 0.152$ \\
+0.70 & $0.499 \pm 0.288$ & $0.351 \pm 0.168$ \\
+0.50 & $0.385 \pm 0.215$ & $0.425 \pm 0.130$ \\
+0.30 & $0.136 \pm 0.117$ & $0.620 \pm 0.175$ \\
+0.20 & $0.062 \pm 0.105$ & $0.753 \pm 0.189$ \\
+0.10 & $0.026 \pm 0.050$ & $0.913 \pm 0.108$ \\

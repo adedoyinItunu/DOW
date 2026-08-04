@@ -1,0 +1,24 @@
+seed 0: macro-F1 0.539  per-class F1 norm=0.738 line=0.389 geom=0.125 rand=0.902
+seed 1: macro-F1 0.821  per-class F1 norm=0.874 line=0.732 geom=0.846 rand=0.833
+seed 2: macro-F1 0.856  per-class F1 norm=0.789 line=0.636 geom=1.000 rand=1.000
+seed 3: macro-F1 0.978  per-class F1 norm=0.957 line=0.953 geom=1.000 rand=1.000
+seed 4: macro-F1 0.896  per-class F1 norm=0.833 line=0.750 geom=1.000 rand=1.000
+seed 5: macro-F1 0.890  per-class F1 norm=0.826 line=0.732 geom=1.000 rand=1.000
+seed 6: macro-F1 0.938  per-class F1 norm=1.000 line=0.861 geom=0.891 rand=1.000
+seed 7: macro-F1 0.983  per-class F1 norm=0.968 line=0.966 geom=1.000 rand=1.000
+seed 8: macro-F1 0.877  per-class F1 norm=0.811 line=0.696 geom=1.000 rand=1.000
+seed 9: macro-F1 0.994  per-class F1 norm=0.989 line=0.989 geom=1.000 rand=1.000
+
+=============== PER-CLASS METRICS ACROSS 10 SEEDS (mean ± std) ===============
+     class |       precision |          recall |        f1-score
+------------------------------------------------------------------
+    normal | 0.795 ± 0.143   | 1.000 ± 0.000   | 0.878 ± 0.089
+    linear | 0.933 ± 0.200   | 0.680 ± 0.188   | 0.770 ± 0.173
+ geometric | 0.980 ± 0.059   | 0.880 ± 0.283   | 0.886 ± 0.259
+    random | 0.971 ± 0.086   | 0.982 ± 0.053   | 0.974 ± 0.055
+------------------------------------------------------------------
+     macro |                 |                 | 0.877 ± 0.126
+
+Reading: watch for any class whose F1 is systematically lower or more
+variable (larger std) than the others -- especially where the leech-heavy
+attack classes are concerned.

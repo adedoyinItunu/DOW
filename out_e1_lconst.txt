@@ -1,0 +1,42 @@
+train 840  val 180  test 180  classes ['normal', 'linear', 'geometric', 'random']
+epoch  1  val_acc 0.500
+epoch  2  val_acc 0.589
+epoch  3  val_acc 0.761
+epoch  4  val_acc 0.828
+epoch  5  val_acc 0.817
+epoch  6  val_acc 0.822
+epoch  7  val_acc 0.828
+epoch  8  val_acc 0.861
+epoch  9  val_acc 0.728
+epoch 10  val_acc 0.861
+epoch 11  val_acc 0.872
+epoch 12  val_acc 0.906
+epoch 13  val_acc 0.983
+epoch 14  val_acc 0.844
+epoch 15  val_acc 0.867
+epoch 16  val_acc 0.961
+epoch 17  val_acc 0.861
+epoch 18  val_acc 0.994
+epoch 19  val_acc 0.900
+epoch 20  val_acc 0.867
+epoch 21  val_acc 0.967
+epoch 22  val_acc 0.867
+epoch 23  val_acc 0.972
+epoch 24  val_acc 0.933
+epoch 25  val_acc 0.911
+
+=============== EXPERIMENT 1: TEST RESULTS ===============
+              precision    recall  f1-score   support
+
+      normal      0.978     1.000     0.989        45
+      linear      1.000     0.978     0.989        45
+   geometric      1.000     1.000     1.000        45
+      random      1.000     1.000     1.000        45
+
+    accuracy                          0.994       180
+   macro avg      0.995     0.994     0.994       180
+weighted avg      0.995     0.994     0.994       180
+
+Macro F1: 0.994
+saved e1_confusion_matrix.png
+saved model -> dow_cnn.pt
