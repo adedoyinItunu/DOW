@@ -26,38 +26,19 @@ SEEDS = [0, 1, 2, 3, 4]
 
 
 def generate(scale, seed, per_class=300, linear_const=False):
-    """
-    Return (X, y, tag) for a dataset generated with the leech intensity scaled
-    by `scale`.  X may be (N,24,30) or (N,1,24,30); y is the class index;
-    tag is the intensity tag (0 normal, 1 leech, 2 flood).
-
-    OPTION A -- import directly (preferred; mirror whatever
-    experiment5_multiseed_sweep.py already calls):
-
-        from dow_data import generate_dataset
-        return generate_dataset(per_class=per_class, seed=seed,
-                                leech_scale=scale, linear_const=linear_const)
-
-    OPTION B -- shell out to the CLI and load the .npz:
-
-        import subprocess, tempfile, os
-        out = os.path.join(tempfile.gettempdir(), f"sweep_{scale}_{seed}.npz")
-        cmd = ["python", "dow_data.py", "--per-class", str(per_class),
-               "--seed", str(seed), "--leech-scale", str(scale), "--out", out]
-        if linear_const:
-            cmd.append("--linear-const")
-        subprocess.run(cmd, check=True)
-        z = np.load(out)
-        return z["X"], z["y"], z["intensity"]
-    """
-    raise NotImplementedError(
-        "Fill in generate() -- see the docstring. Copy the call that "
-        "experiment5_multiseed_sweep.py already uses to scale leech intensity."
-    )
+    """Generate a dataset with the leech intensity scaled by `scale`."""
+    from dow_data import GenParams, generate_dataset
+    params = GenParams(leech_scale=scale, linear_const=linear_const)
+    return generate_dataset(per_class=per_class, seed=seed, params=params)
 
 
 def mean_pixel_scores(X):
-    X = np.asarray(X)
+    """Mean NORMALISED pixel value, matching test_auc_separability.py and the
+    description in Section 4.5.1. Scoring the raw counts instead changes the
+    ranking, because the mean of log1p is not log1p of the mean, and gives a
+    fixed-threshold detection rate 0.21 lower at scale 0.30."""
+    from dow_data import normalize
+    X = np.asarray(normalize(X))
     if X.ndim == 4:
         X = X[:, 0]
     return X.reshape(len(X), -1).mean(axis=1)

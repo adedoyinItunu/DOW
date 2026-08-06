@@ -54,11 +54,15 @@ def main():
     ap.add_argument("--out", default="roc_separability.png")
     args = ap.parse_args()
 
-    # ---- fixed threshold, calibrated once at full intensity on the first seed
-    s1, l1 = scores_at_scale(1.0, args.per_class, args.seeds[0])
-    fpr1, tpr1, thr1 = roc_curve(l1, s1)
-    thr_fixed = thr1[np.argmax(tpr1 - fpr1)]          # Youden's J
-    print(f"fixed threshold (Youden's J at scale 1.00): {thr_fixed:.4f}\n")
+    # ---- fixed threshold, calibrated per seed at full intensity, matching
+    # ---- fixed_threshold_control.py, which produced Table 4.8
+    thr_by_seed = {}
+    for sd in args.seeds:
+        s1, l1 = scores_at_scale(1.0, args.per_class, sd)
+        fpr1, tpr1, thr1 = roc_curve(l1, s1)
+        thr_by_seed[sd] = thr1[np.argmax(tpr1 - fpr1)]     # Youden's J
+    print(f"per-seed Youden thresholds at scale 1.00: mean "
+          f"{np.mean(list(thr_by_seed.values())):.4f}\n")
 
     aucs, det, fprs = {}, {}, {}
     curves = {}
@@ -68,8 +72,8 @@ def main():
         for sd in args.seeds:
             s, lab = scores_at_scale(sc, args.per_class, sd)
             a.append(roc_auc_score(lab, s))
-            d.append(float((s[lab == 1] >= thr_fixed).mean()))
-            f.append(float((s[lab == 0] >= thr_fixed).mean()))
+            d.append(float((s[lab == 1] >= thr_by_seed[sd]).mean()))
+            f.append(float((s[lab == 0] >= thr_by_seed[sd]).mean()))
             if sd == args.seeds[0]:
                 curves[sc] = roc_curve(lab, s)[:2]
         aucs[sc], det[sc], fprs[sc] = (np.mean(a), np.std(a)), np.mean(d), np.mean(f)
