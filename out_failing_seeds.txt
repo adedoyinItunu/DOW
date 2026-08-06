@@ -1,0 +1,53 @@
+=== failing-seed diagnosis, fixed25 on data_lramp.npz ===
+
+--- seed 2  (macro-F1 0.498) ---
+                  predicted
+            normal  linear  geomet  random
+true normal        45       0       0       0   F1=0.732
+true linear        18      27       0       0   F1=0.462
+true geometric      0      45       0       0   F1=0.000
+true random        15       0       0      30   F1=0.800
+  COLLAPSE in geometric: (a) never predicted; its 45 samples went to linear (45 of 45)
+  final six validation accuracies: 0.922, 0.878, 0.944, 0.811, 0.872, 0.550
+  largest swing among them: 0.322   <- (d) trajectory not settled
+
+--- seed 6  (macro-F1 0.644) ---
+                  predicted
+            normal  linear  geomet  random
+true normal        44       0       0       1   F1=0.978
+true linear         1       0      22      22   F1=0.000
+true geometric      0       0      45       0   F1=0.804
+true random         0       0       0      45   F1=0.796
+  COLLAPSE in linear: (a) never predicted; its 45 samples went to geometric (22 of 45)
+  final six validation accuracies: 0.794, 0.750, 0.750, 0.844, 0.867, 0.739
+  largest swing among them: 0.128
+
+--- seed 7  (macro-F1 0.535) ---
+                  predicted
+            normal  linear  geomet  random
+true normal        23       0       0      22   F1=0.676
+true linear         0       0      26      19   F1=0.000
+true geometric      0       0      45       0   F1=0.776
+true random         0       0       0      45   F1=0.687
+  COLLAPSE in linear: (a) never predicted; its 45 samples went to geometric (26 of 45)
+  final six validation accuracies: 0.622, 0.822, 0.728, 0.778, 0.950, 0.644
+  largest swing among them: 0.306   <- (d) trajectory not settled
+
+--- seed 9  (macro-F1 0.600) ---
+                  predicted
+            normal  linear  geomet  random
+true normal        45       0       0       0   F1=0.882
+true linear         1      44       0       0   F1=0.657
+true geometric      0      45       0       0   F1=0.000
+true random        11       0       0      34   F1=0.861
+  COLLAPSE in geometric: (a) never predicted; its 45 samples went to linear (45 of 45)
+  final six validation accuracies: 0.867, 0.628, 0.967, 0.906, 0.867, 0.661
+  largest swing among them: 0.339   <- (d) trajectory not settled
+
+wrote failing_seeds.png
+
+=== summary of collapses ===
+seed 2, class geometric: (a) never predicted; its 45 samples went to linear (45 of 45)
+seed 6, class linear: (a) never predicted; its 45 samples went to geometric (22 of 45)
+seed 7, class linear: (a) never predicted; its 45 samples went to geometric (26 of 45)
+seed 9, class geometric: (a) never predicted; its 45 samples went to linear (45 of 45)

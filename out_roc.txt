@@ -1,0 +1,10 @@
+fixed threshold (Youden's J at scale 1.00): 0.4146
+
+scale 1.00  AUC 1.000 +/- 0.000   fixed-threshold detection 0.996   FPR 0.0000
+scale 0.70  AUC 0.999 +/- 0.001   fixed-threshold detection 0.947   FPR 0.0000
+scale 0.50  AUC 0.995 +/- 0.002   fixed-threshold detection 0.842   FPR 0.0000
+scale 0.30  AUC 0.967 +/- 0.004   fixed-threshold detection 0.673   FPR 0.0000
+scale 0.20  AUC 0.929 +/- 0.007   fixed-threshold detection 0.515   FPR 0.0000
+scale 0.10  AUC 0.848 +/- 0.015   fixed-threshold detection 0.356   FPR 0.0000
+
+wrote roc_separability.png

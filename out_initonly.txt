@@ -1,0 +1,27 @@
+=== minimal/fixed25/vary=init on data_lramp.npz ===
+seed 0: macro-F1 0.798  norm=0.891 line=0.698 geom=0.636 rand=0.966
+seed 1: macro-F1 0.883  norm=0.818 line=0.714 geom=1.000 rand=1.000
+seed 2: macro-F1 0.544  norm=0.720 line=0.411 geom=0.200 rand=0.846
+seed 3: macro-F1 0.951  norm=0.909 line=0.916 geom=1.000 rand=0.977
+seed 4: macro-F1 0.704  norm=0.744 line=0.494 geom=0.676 rand=0.902
+seed 5: macro-F1 0.920  norm=0.865 line=0.816 geom=1.000 rand=1.000
+seed 6: macro-F1 1.000  norm=1.000 line=1.000 geom=1.000 rand=1.000
+seed 7: macro-F1 0.675  norm=0.796 line=0.085 geom=0.818 rand=1.000
+seed 8: macro-F1 0.949  norm=0.909 line=0.889 geom=1.000 rand=1.000
+seed 9: macro-F1 0.850  norm=0.776 line=0.657 geom=1.000 rand=0.966
+
+------------------------------------------------------------
+macro-F1        0.827 +/- 0.138   (range 0.544-1.000)
+  normal        0.843 +/- 0.083
+  linear        0.668 +/- 0.261
+  geometric     0.833 +/- 0.251
+  random        0.966 +/- 0.049
+per-class collapses to F1=0.000: 0 of 40
+largest adjacent-epoch validation swing: 0.539 (max over seeds), 0.362 (mean)
+elapsed 78s
+------------------------------------------------------------
+Compare against, on data_lramp.npz, arch=minimal, vary=both:
+  fixed25      0.756 +/- 0.149   (thesis 4.2)
+  fixed25_sel  0.966 +/- 0.030   (thesis 4.1)
+  logistic reg 0.972 +/- 0.008   (thesis 4.2.2)
+wrote initonly.json

@@ -1,0 +1,28 @@
+=== minimal/converged/vary=both on data_lramp.npz ===
+    200 epochs, cosine annealing, final-epoch params
+seed 0: macro-F1 0.994  norm=0.989 line=0.989 geom=1.000 rand=1.000
+seed 1: macro-F1 1.000  norm=1.000 line=1.000 geom=1.000 rand=1.000
+seed 2: macro-F1 1.000  norm=1.000 line=1.000 geom=1.000 rand=1.000
+seed 3: macro-F1 1.000  norm=1.000 line=1.000 geom=1.000 rand=1.000
+seed 4: macro-F1 0.994  norm=0.989 line=0.989 geom=1.000 rand=1.000
+seed 5: macro-F1 0.994  norm=0.989 line=0.989 geom=1.000 rand=1.000
+seed 6: macro-F1 0.989  norm=0.978 line=0.977 geom=1.000 rand=1.000
+seed 7: macro-F1 0.989  norm=0.978 line=0.977 geom=1.000 rand=1.000
+seed 8: macro-F1 0.994  norm=0.989 line=0.989 geom=1.000 rand=1.000
+seed 9: macro-F1 1.000  norm=1.000 line=1.000 geom=1.000 rand=1.000
+
+------------------------------------------------------------
+macro-F1        0.996 +/- 0.004   (range 0.989-1.000)
+  normal        0.991 +/- 0.008
+  linear        0.991 +/- 0.008
+  geometric     1.000 +/- 0.000
+  random        1.000 +/- 0.000
+per-class collapses to F1=0.000: 0 of 40
+largest adjacent-epoch validation swing: 0.561 (max over seeds), 0.418 (mean)
+elapsed 609s
+------------------------------------------------------------
+Compare against, on data_lramp.npz, arch=minimal, vary=both:
+  fixed25      0.756 +/- 0.149   (thesis 4.2)
+  fixed25_sel  0.966 +/- 0.030   (thesis 4.1)
+  logistic reg 0.972 +/- 0.008   (thesis 4.2.2)
+wrote converged.json

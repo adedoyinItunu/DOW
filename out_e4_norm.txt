@@ -1,0 +1,40 @@
+==============================================================================
+EXPERIMENT 4  --  normalisation as a targeted intervention
+train data_configA.npz | cross-test data_configB.npz | protocol fixed25 | seeds [0, 1, 2, 3, 4]
+==============================================================================
+
+SCHEME: fixed log1p(400)
+  1. within-config macro-F1       0.778 +/- 0.156
+  2. cross-config normal FP rate  1.000 +/- 0.000   (1.000 = every legitimate sample flagged)
+     cross-config normal-class F1 0.000 +/- 0.000
+  3. leech detection (intensity 1)  0.648 +/- 0.208
+  4. flood detection (intensity 2)  0.878 +/- 0.135
+
+SCHEME: per-image max
+  1. within-config macro-F1       0.817 +/- 0.164
+  2. cross-config normal FP rate  0.730 +/- 0.386   (1.000 = every legitimate sample flagged)
+     cross-config normal-class F1 0.246 +/- 0.320
+  3. leech detection (intensity 1)  0.782 +/- 0.107
+  4. flood detection (intensity 2)  0.916 +/- 0.133
+
+SCHEME: per-image robust
+  1. within-config macro-F1       0.934 +/- 0.059
+  2. cross-config normal FP rate  0.242 +/- 0.241   (1.000 = every legitimate sample flagged)
+     cross-config normal-class F1 0.783 +/- 0.152
+  3. leech detection (intensity 1)  0.838 +/- 0.157
+  4. flood detection (intensity 2)  1.000 +/- 0.000
+
+==============================================================================
+axis                                  fixed log1p(400)      per-image robust
+------------------------------------------------------------------------------
+within-config macro-F1                    0.778                 0.934
+cross-config normal FP rate               1.000                 0.242
+leech detection                           0.648                 0.838
+flood detection                           0.878                 1.000
+------------------------------------------------------------------------------
+cross-config false positives fall by +0.758
+leech detection changes by           +0.190
+
+VERDICT: the alternative improves cross-configuration behaviour
+without materially damaging attack detection. This supports the
+intervention as a refinement rather than a trade.

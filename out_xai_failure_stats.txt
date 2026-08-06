@@ -1,0 +1,113 @@
+late columns: 23-29 (final week)   n per group: 50
+dominant failure: normal -> geometric (273 of 300)
+uniform-attention reference: 0.233 (7 of 30 columns carry no preference)
+
+============================================================================
+METHOD: grad-cam    TARGET CLASS: predicted (per-group, as originally run)
+============================================================================
+                           group |   mean |   std |           95% CI
+----------------------------------------------------------------------------
+               genuine geometric |  0.420 | 0.074 | [0.399, 0.440]
+              leech (any attack) |  0.360 | 0.110 | [0.330, 0.390]
+              flood (any attack) |  0.308 | 0.065 | [0.290, 0.326]
+              A normal (correct) |  0.273 | 0.028 | [0.265, 0.281]
+      B normal->geometric (FAIL) |  0.238 | 0.033 | [0.229, 0.248]
+
+  Mann-Whitney U, B normal->geometric (FAIL) vs each group:
+    vs genuine geometric              U=      9  p=1.21e-17  rank-biserial=-0.99
+    vs leech (any attack)             U=    384  p=2.42e-09  rank-biserial=-0.69
+    vs flood (any attack)             U=    428  p=1.49e-08  rank-biserial=-0.66
+    vs A normal (correct)             U=    553  p=1.57e-06  rank-biserial=-0.56
+
+============================================================================
+METHOD: grad-cam    TARGET CLASS: fixed (= geometric for every group)
+============================================================================
+                           group |   mean |   std |           95% CI
+----------------------------------------------------------------------------
+               genuine geometric |  0.420 | 0.074 | [0.399, 0.440]
+              leech (any attack) |  0.360 | 0.110 | [0.330, 0.390]
+              flood (any attack) |  0.308 | 0.065 | [0.290, 0.326]
+              A normal (correct) |  0.284 | 0.033 | [0.275, 0.293]
+      B normal->geometric (FAIL) |  0.238 | 0.033 | [0.229, 0.248]
+
+  Mann-Whitney U, B normal->geometric (FAIL) vs each group:
+    vs genuine geometric              U=      9  p=1.21e-17  rank-biserial=-0.99
+    vs leech (any attack)             U=    384  p=2.42e-09  rank-biserial=-0.69
+    vs flood (any attack)             U=    428  p=1.49e-08  rank-biserial=-0.66
+    vs A normal (correct)             U=    421  p=1.12e-08  rank-biserial=-0.66
+
+============================================================================
+METHOD: saliency    TARGET CLASS: predicted (per-group, as originally run)
+============================================================================
+                           group |   mean |   std |           95% CI
+----------------------------------------------------------------------------
+               genuine geometric |  0.250 | 0.012 | [0.247, 0.253]
+              leech (any attack) |  0.248 | 0.018 | [0.243, 0.253]
+      B normal->geometric (FAIL) |  0.247 | 0.013 | [0.244, 0.251]
+              flood (any attack) |  0.246 | 0.023 | [0.240, 0.253]
+              A normal (correct) |  0.245 | 0.023 | [0.239, 0.251]
+
+  Mann-Whitney U, B normal->geometric (FAIL) vs each group:
+    vs genuine geometric              U=   1113  p=3.47e-01  rank-biserial=-0.11   (not significant)
+    vs leech (any attack)             U=   1220  p=8.39e-01  rank-biserial=-0.02   (not significant)
+    vs flood (any attack)             U=   1239  p=9.42e-01  rank-biserial=-0.01   (not significant)
+    vs A normal (correct)             U=   1290  p=7.85e-01  rank-biserial=+0.03   (not significant)
+
+============================================================================
+METHOD: saliency    TARGET CLASS: fixed (= geometric for every group)
+============================================================================
+                           group |   mean |   std |           95% CI
+----------------------------------------------------------------------------
+              A normal (correct) |  0.250 | 0.018 | [0.246, 0.255]
+               genuine geometric |  0.250 | 0.012 | [0.247, 0.253]
+              leech (any attack) |  0.248 | 0.018 | [0.243, 0.253]
+      B normal->geometric (FAIL) |  0.247 | 0.013 | [0.244, 0.251]
+              flood (any attack) |  0.246 | 0.023 | [0.240, 0.253]
+
+  Mann-Whitney U, B normal->geometric (FAIL) vs each group:
+    vs A normal (correct)             U=   1121  p=3.76e-01  rank-biserial=-0.10   (not significant)
+    vs genuine geometric              U=   1113  p=3.47e-01  rank-biserial=-0.11   (not significant)
+    vs leech (any attack)             U=   1220  p=8.39e-01  rank-biserial=-0.02   (not significant)
+    vs flood (any attack)             U=   1239  p=9.42e-01  rank-biserial=-0.01   (not significant)
+
+============================================================================
+METHOD: shap    TARGET CLASS: predicted (per-group, as originally run)
+============================================================================
+                           group |   mean |   std |           95% CI
+----------------------------------------------------------------------------
+               genuine geometric |  0.532 | 0.034 | [0.522, 0.541]
+              leech (any attack) |  0.419 | 0.083 | [0.396, 0.441]
+              flood (any attack) |  0.414 | 0.105 | [0.384, 0.443]
+              A normal (correct) |  0.385 | 0.018 | [0.380, 0.390]
+      B normal->geometric (FAIL) |  0.222 | 0.012 | [0.218, 0.225]
+
+  Mann-Whitney U, B normal->geometric (FAIL) vs each group:
+    vs genuine geometric              U=      0  p=7.07e-18  rank-biserial=-1.00
+    vs leech (any attack)             U=      0  p=7.07e-18  rank-biserial=-1.00
+    vs flood (any attack)             U=      0  p=7.07e-18  rank-biserial=-1.00
+    vs A normal (correct)             U=      0  p=7.07e-18  rank-biserial=-1.00
+
+============================================================================
+METHOD: shap    TARGET CLASS: fixed (= geometric for every group)
+============================================================================
+                           group |   mean |   std |           95% CI
+----------------------------------------------------------------------------
+               genuine geometric |  0.532 | 0.034 | [0.522, 0.541]
+              leech (any attack) |  0.419 | 0.083 | [0.396, 0.441]
+              flood (any attack) |  0.414 | 0.105 | [0.384, 0.443]
+              A normal (correct) |  0.392 | 0.019 | [0.387, 0.398]
+      B normal->geometric (FAIL) |  0.222 | 0.012 | [0.218, 0.225]
+
+  Mann-Whitney U, B normal->geometric (FAIL) vs each group:
+    vs genuine geometric              U=      0  p=7.07e-18  rank-biserial=-1.00
+    vs leech (any attack)             U=      0  p=7.07e-18  rank-biserial=-1.00
+    vs flood (any attack)             U=      0  p=7.07e-18  rank-biserial=-1.00
+    vs A normal (correct)             U=      0  p=7.07e-18  rank-biserial=-1.00
+
+============================================================================
+READ THIS AS: the claim is about the RELATIVE ORDERING of group means,
+not about which cells drive any individual prediction. If the ordering
+holds under both target conventions and across all three attribution
+methods, the interpretation in Section 4.8 is supported independently
+of the choice of method. If it does not, report the disagreement: it is
+a meaningful explainability result either way (Section 4.3).
