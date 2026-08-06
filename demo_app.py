@@ -191,8 +191,7 @@ button:disabled{opacity:.45;cursor:default}
 </style></head><body><div class="wrap">
 
 <h1>Denial-of-Wallet detector</h1>
-<p class="sub">Generate a month of serverless traffic, render it as a 24 × 30 heat-map,
-and run both models on it live. Nothing on this page is precomputed.</p>
+<p class="sub"><p class="sub">Itunu Deborah Adedoyin — x24249700 — MSc Cloud Computing, National College of Ireland</p></p>
 
 <div class="panel"><div class="controls">
   <div><label>Traffic class</label>
