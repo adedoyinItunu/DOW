@@ -1,0 +1,54 @@
+============================================================================
+MULTI-SEED GROUP ATTENTION   method=shap  protocol=converged  n per group=25
+uniform reference = 0.2333
+============================================================================
+
+seed 0: normal -> linear (300 of 300)
+   failure=0.261  normal-ok=0.366  genuine=0.335  leech=0.407  flood=0.386
+   failure group lowest? YES   vs uniform: +0.0272
+   effect sizes vs failure: normal-ok r=-1.00  genuine r=-1.00  leech r=-0.92  flood r=-0.60
+
+seed 1: normal -> linear (300 of 300)
+   failure=0.235  normal-ok=0.356  genuine=0.331  leech=0.413  flood=0.393
+   failure group lowest? YES   vs uniform: +0.0018
+   effect sizes vs failure: normal-ok r=-1.00  genuine r=-1.00  leech r=-0.95  flood r=-0.95
+
+seed 2: normal -> linear (300 of 300)
+   failure=0.273  normal-ok=0.415  genuine=0.369  leech=0.466  flood=0.418
+   failure group lowest? YES   vs uniform: +0.0400
+   effect sizes vs failure: normal-ok r=-1.00  genuine r=-1.00  leech r=-0.92  flood r=-0.79
+
+seed 3: normal -> linear (300 of 300)
+   failure=0.283  normal-ok=0.435  genuine=0.365  leech=0.441  flood=0.395
+   failure group lowest? YES   vs uniform: +0.0496
+   effect sizes vs failure: normal-ok r=-1.00  genuine r=-0.92  leech r=-1.00  flood r=-0.77
+
+seed 4: normal -> linear (300 of 300)
+   failure=0.281  normal-ok=0.383  genuine=0.356  leech=0.433  flood=0.398
+   failure group lowest? YES   vs uniform: +0.0478
+   effect sizes vs failure: normal-ok r=-1.00  genuine r=-0.96  leech r=-0.95  flood r=-0.52
+
+============================================================================
+AGGREGATE
+----------------------------------------------------------------------------
+  failure group ranked lowest on 5 of 5 seeds
+  identical full ordering on all seeds? NO
+     4x  leech > flood > normal-ok > genuine > failure
+     1x  leech > normal-ok > flood > genuine > failure
+  failure    across seeds: 0.2666 +/- 0.0197  (min 0.2351, max 0.2830)
+  normal-ok  across seeds: 0.3910 +/- 0.0332  (min 0.3562, max 0.4350)
+  genuine    across seeds: 0.3514 +/- 0.0173  (min 0.3312, max 0.3691)
+  leech      across seeds: 0.4319 +/- 0.0238  (min 0.4067, max 0.4662)
+  flood      across seeds: 0.3980 +/- 0.0119  (min 0.3858, max 0.4176)
+  effect vs normal-ok  r = -1.000 +/- 0.000   all negative? YES
+  effect vs genuine    r = -0.974 +/- 0.037   all negative? YES
+  effect vs leech      r = -0.945 +/- 0.034   all negative? YES
+  effect vs flood      r = -0.727 +/- 0.166   all negative? YES
+
+============================================================================
+READING: if the failure group ranks lowest on every seed and every
+effect size is negative, the ordering is a property of the phenomenon
+rather than of one trained model, and the single-seed result in the
+report can be replaced by these mean +/- sd figures. If it does not
+hold, report the proportion of seeds on which it does and withdraw the
+stronger claim.
