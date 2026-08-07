@@ -68,7 +68,8 @@ SCHEMES = {
 }
 
 
-def train_and_eval(Xa_raw, ya, Xb_raw, yb, normfn, seed, epochs=25, batch=32):
+def train_and_eval(Xa_raw, ya, Xb_raw, yb, normfn, seed, epochs=25, batch=32,
+                   protocol='fixed25'):
     Xa = normfn(Xa_raw)
     Xb = normfn(Xb_raw)
 
@@ -83,9 +84,14 @@ def train_and_eval(Xa_raw, ya, Xb_raw, yb, normfn, seed, epochs=25, batch=32):
     crit = nn.CrossEntropyLoss()
 
     model.train()
-    for _ in range(epochs):
+    n_epochs = 200 if protocol == 'converged' else epochs
+    sched = (torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=n_epochs)
+             if protocol == 'converged' else None)
+    for _ in range(n_epochs):
         for xb, yb_ in dl:
             opt.zero_grad(); crit(model(xb), yb_).backward(); opt.step()
+        if sched is not None:
+            sched.step()
     model.eval()
 
     with torch.no_grad():
@@ -102,6 +108,8 @@ def main():
     ap.add_argument("--config-a", default="data_configA.npz")
     ap.add_argument("--config-b", default="data_configB.npz")
     ap.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2, 3, 4])
+    ap.add_argument("--protocol", default="fixed25",
+                    choices=["fixed25", "converged"])
     args = ap.parse_args()
 
     da = np.load(args.config_a, allow_pickle=True)
@@ -123,7 +131,7 @@ def main():
         last_pred = None
         for s in args.seeds:
             macro, per_class, pred = train_and_eval(
-                Xa_raw, ya, Xb_raw, yb, fn, s)
+                Xa_raw, ya, Xb_raw, yb, fn, s, protocol=args.protocol)
             macros.append(macro)
             normals.append(per_class[0])       # class 0 = normal
             last_pred = pred

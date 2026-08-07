@@ -1,0 +1,49 @@
+==============================================================================
+METHOD: shap   region: columns 23-29   uniform reference: 0.2333
+dominant failure: normal -> geometric (273 of 300)
+==============================================================================
+
+DISTRIBUTIONS (target class fixed to the failure class)
+------------------------------------------------------------------------------
+FAIL: B normal->geometric         n= 50  mean=0.2220  sd=0.0124  min=0.1950  Q1=0.2133  med=0.2219  Q3=0.2334  max=0.2419
+A normal (correct)                n= 50  mean=0.3925  sd=0.0190  min=0.3432  Q1=0.3815  med=0.3948  Q3=0.4094  max=0.4269
+genuine geometric                 n= 50  mean=0.5319  sd=0.0347  min=0.4314  Q1=0.5079  med=0.5433  Q3=0.5559  max=0.5854
+leech (any attack)                n= 50  mean=0.4185  sd=0.0837  min=0.3034  Q1=0.3508  med=0.3857  Q3=0.5013  max=0.5619
+flood (any attack)                n= 50  mean=0.4140  sd=0.1064  min=0.2614  Q1=0.3228  med=0.3732  Q3=0.5185  max=0.5854
+
+COMPARISONS: FAIL: B normal->geometric against each group
+------------------------------------------------------------------------------
+
+  vs A normal (correct)
+     U (hand) =      0.0   U (scipy) =      0.0
+     tied pairs = 0 of 2500
+     rank-biserial r = -1.0000   (perfect separation)
+     ranges overlap? NO   max(fail)=0.2419  min(other)=0.3432
+     p = 7.066e-18   Holm-adjusted = 2.826e-17   significant at alpha=0.05
+
+  vs genuine geometric
+     U (hand) =      0.0   U (scipy) =      0.0
+     tied pairs = 0 of 2500
+     rank-biserial r = -1.0000   (perfect separation)
+     ranges overlap? NO   max(fail)=0.2419  min(other)=0.4314
+     p = 7.066e-18   Holm-adjusted = 2.826e-17   significant at alpha=0.05
+
+  vs leech (any attack)
+     U (hand) =      0.0   U (scipy) =      0.0
+     tied pairs = 0 of 2500
+     rank-biserial r = -1.0000   (perfect separation)
+     ranges overlap? NO   max(fail)=0.2419  min(other)=0.3034
+     p = 7.066e-18   Holm-adjusted = 2.826e-17   significant at alpha=0.05
+
+  vs flood (any attack)
+     U (hand) =      0.0   U (scipy) =      0.0
+     tied pairs = 0 of 2500
+     rank-biserial r = -1.0000   (perfect separation)
+     ranges overlap? NO   max(fail)=0.2419  min(other)=0.2614
+     p = 7.066e-18   Holm-adjusted = 2.826e-17   significant at alpha=0.05
+
+==============================================================================
+A rank-biserial of exactly -1.00 is only correct when max(failure group)
+is strictly below min(comparison group). Where the ranges overlap, the
+effect size must be strictly greater than -1. Report the values printed
+above rather than the earlier figures if they differ.

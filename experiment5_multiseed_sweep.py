@@ -29,16 +29,22 @@ from dow_data import load_and_split, load_all
 from dow_model import DoWNetCNN, set_seed
 
 
-def train_one(Xtr, ytr, n_classes, epochs=25, lr=1e-3, batch=32):
+def train_one(Xtr, ytr, n_classes, epochs=25, lr=1e-3, batch=32,
+              protocol='fixed25'):
     ds = TensorDataset(torch.tensor(Xtr), torch.tensor(ytr))
     dl = DataLoader(ds, batch_size=batch, shuffle=True)
     model = DoWNetCNN(n_classes=n_classes)
     opt = torch.optim.Adam(model.parameters(), lr=lr)
     crit = nn.CrossEntropyLoss()
     model.train()
-    for _ in range(epochs):
+    n_epochs = 200 if protocol == 'converged' else epochs
+    sched = (torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=n_epochs)
+             if protocol == 'converged' else None)
+    for _ in range(n_epochs):
         for xb, yb in dl:
             opt.zero_grad(); crit(model(xb), yb).backward(); opt.step()
+        if sched is not None:
+            sched.step()
     model.eval()
     return model
 
@@ -55,6 +61,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default="data.npz")
     ap.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2, 3, 4])
+    ap.add_argument("--protocol", default="fixed25",
+                    choices=["fixed25", "converged"])
     ap.add_argument("--levels", type=float, nargs="+",
                     default=[1.0, 0.7, 0.5, 0.3, 0.2, 0.1])
     args = ap.parse_args()
@@ -66,7 +74,7 @@ def main():
     for s in args.seeds:
         set_seed(s)
         (Xtr, ytr, _), _, _, names = load_and_split(args.data, s)
-        model = train_one(Xtr, ytr, len(names))
+        model = train_one(Xtr, ytr, len(names), protocol=args.protocol)
         print(f"seed {s}: model trained", flush=True)
         for lvl in args.levels:
             path = gen_leech(lvl, s)
