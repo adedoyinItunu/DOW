@@ -1,5 +1,5 @@
 """
-plot_roc_separability.py  --  ROC curves for Section 4.5.1
+plot_roc_separability.py  --  ROC curves for the research report
 ==========================================================
 test_auc_separability.py reports the AUC as a scalar per intensity. Table 4.8
 gives those numbers but the thesis has no figure for them, and the shape of the
@@ -30,7 +30,7 @@ from dow_data import GenParams, generate_dataset, normalize
 
 SCALES = [1.0, 0.7, 0.5, 0.3, 0.2, 0.1]
 
-# binary attack-detection rates for the fitted detectors, Section 4.5.1.
+# binary attack-detection rates for the fitted detectors, the research report.
 # only the two intensities quoted in the thesis are available.
 CNN_BINARY = {0.30: 0.451, 0.10: 0.188}
 LR_BINARY = {0.30: 0.367, 0.10: 0.292}

@@ -13,8 +13,8 @@ Separability of normal vs leech by mean pixel value alone
 Reading:
   AUC stays high as scale falls -> the leech/normal distributions remain
     separable on a single scalar, so the detectors' collapse is a failure
-    to use available information (supports the Section 5.3 reading).
+    to use available information (supports the the research report reading).
   AUC falls toward 0.5 alongside detection -> the distributions genuinely
     overlap, and the evasion threshold reflects the task, not the detectors.
 
-Either outcome resolves the limitation stated in Section 5.6.
+Either outcome resolves the limitation stated in the research report.

@@ -1,21 +1,15 @@
 """
-experiment6_xai_failures.py  --  explainability of the failure mode
-==================================================================
-REWRITTEN. Changes from the previous version:
+experiment6_xai_failures.py  --  group-level attribution on the failure mode
 
-1. Targets the DOMINANT failure mode rather than a hardcoded one.
-   On the locked checkpoint, Config-B normals are misclassified as
-   `geometric` 273 times and as `linear` only 27 times. The old script
-   analysed the 27 and ignored the 273.
+Compares the mean Grad-CAM attention each group receives in the final week of
+the month, for the dominant misclassification of shifted legitimate traffic.
 
-2. Uses all available samples per group (capped by --k, default 50)
-   instead of a fixed 8, so the comparison has statistical weight.
-
-3. Reports mean +/- standard deviation per group, and n, which the
-   previous version did not - a specific criticism raised in review.
-
-4. States the late-column definition explicitly in the output so it can
-   be quoted in the thesis.
+The dominant failure mode is identified from the confusion breakdown at run
+time rather than assumed, since it differs between checkpoints. Up to --k
+samples are drawn per group (default 50), and each group is reported as a mean
+and standard deviation alongside its n, so the spread is visible as well as the
+ordering. The late-column boundary is printed with the results so the
+definition travels with the numbers.
 
 Run:
     python experiment6_xai_failures.py --model dow_cnn_locked.pt \
@@ -155,15 +149,30 @@ def main():
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        fig, axes = plt.subplots(1, len(groups), figsize=(2.4 * len(groups), 3))
-        for ax, (label, *_) in zip(axes, groups):
-            ax.imshow(heat[label], origin="lower", aspect="auto", cmap="jet")
-            ax.set_title(label, fontsize=7)
-            ax.set_xticks([]); ax.set_yticks([])
-        fig.suptitle(f"Mean Grad-CAM by group "
-                     f"(diagnosing the normal->{names[fail_cls]} failure)",
-                     fontsize=11, fontweight="bold")
-        fig.tight_layout(rect=[0, 0, 1, 0.9])
+        order = sorted(range(len(groups)),
+                       key=lambda i: (0 if groups[i][0].startswith("A ") else
+                                      1 if "(FAIL)" in groups[i][0] else 2))
+        labels = [groups[i][0] for i in order]
+        pretty = [l.replace("A normal (correct)", "normal, classified correctly")
+                   .replace("B normal->", "normal misread as ")
+                   .replace(" (FAIL)", " (failure)")
+                  for l in labels]
+
+        fig, axes = plt.subplots(1, len(labels),
+                                 figsize=(2.6 * len(labels), 3.4), sharey=True)
+        vmax = max(heat[l].max() for l in labels)
+        for ax, label, title in zip(axes, labels, pretty):
+            im = ax.imshow(heat[label], origin="lower", aspect="auto",
+                           cmap="viridis", vmin=0, vmax=vmax,
+                           extent=[0.5, 30.5, -0.5, 23.5])
+            ax.set_title(title, fontsize=7)
+            ax.set_xticks([1, 8, 15, 22, 29])
+            ax.set_xlabel("day of month", fontsize=7)
+            ax.axvline(23.5, color="w", lw=0.8, ls="--")   # boundary before column 23
+            ax.tick_params(labelsize=6)
+        axes[0].set_yticks([0, 6, 12, 18, 23])
+        axes[0].set_ylabel("hour of day", fontsize=7)
+        fig.colorbar(im, ax=axes, fraction=0.012, pad=0.01).ax.tick_params(labelsize=6)
         fig.savefig(args.out, dpi=130, bbox_inches="tight")
         plt.close(fig)
         print(f"\nsaved {args.out}")

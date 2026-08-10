@@ -1,7 +1,7 @@
 """
-paired_test_cnn_vs_lr.py  --  the paired significance test for Section 4.2.1
+paired_test_cnn_vs_lr.py  --  the paired significance test for the research report
 ============================================================================
-Section 4.2.1 compares the CNN against logistic regression across ten
+the research report compares the CNN against logistic regression across ten
 partition-varying seeds but reports only that the ranges do not overlap. The
 two models are evaluated on the SAME partitions, so the comparison is paired
 and a paired test is available at no cost.
@@ -15,7 +15,7 @@ signed-rank test over the ten paired macro-F1 values.
     python paired_test_cnn_vs_lr.py
     python paired_test_cnn_vs_lr.py --seeds 0 1 2 3 4 5 6 7 8 9
 
-Paste the printed statistic and p-value into the \\todo{} marker in Section 4.2.1.
+Paste the printed statistic and p-value into the \\todo{} marker in the research report.
 """
 import argparse
 import numpy as np
@@ -86,7 +86,7 @@ def main():
     print(f"  statistic W = {stat:.1f}")
     print(f"  p = {p:.5f}")
     print(f"  LR exceeds CNN on {int((lr_f1 > cnn_f1).sum())} of {len(args.seeds)} seeds")
-    print("\nSentence for Section 4.2.1:")
+    print("\nSentence for the research report:")
     print(f"  A Wilcoxon signed-rank test over the ten paired seeds confirms the")
     print(f"  difference is significant (W = {stat:.1f}, p = {p:.4f}), with the linear")
     print(f"  model exceeding the convolutional one on "

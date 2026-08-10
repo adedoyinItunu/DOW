@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fixed-threshold control for the leech-intensity sweep (Section 4.5.1, Table 4.10).
+Fixed-threshold control for the leech-intensity sweep (the research report, Table 4.10).
 
 The AUC column currently reported is threshold-free, so it implicitly grants an
 optimal operating point at every intensity, while the CNN and LR detectors are
@@ -12,7 +12,7 @@ sweep, exactly as a deployed detector would.
 Output is a new column for Table 4.10: "fixed-threshold detection rate".
 
 ------------------------------------------------------------------------------
-ADAPTATION POINT: fill in generate() to match your dow_data.py API. Everything
+ADAPTATION POINT: fill in generate() to match the dow_data.py API. Everything
 else is generator-agnostic. See the two options in the function body.
 ------------------------------------------------------------------------------
 """
@@ -34,7 +34,7 @@ def generate(scale, seed, per_class=300, linear_const=False):
 
 def mean_pixel_scores(X):
     """Mean NORMALISED pixel value, matching test_auc_separability.py and the
-    description in Section 4.5.1. Scoring the raw counts instead changes the
+    description in the research report. Scoring the raw counts instead changes the
     ranking, because the mean of log1p is not log1p of the mean, and gives a
     fixed-threshold detection rate 0.21 lower at scale 0.30."""
     from dow_data import normalize

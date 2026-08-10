@@ -20,7 +20,7 @@ Wilcoxon signed-rank, paired over 10 seeds:
   p = 0.00195
   LR exceeds CNN on 10 of 10 seeds
 
-Sentence for Section 4.2.1:
+Sentence for the research report:
   A Wilcoxon signed-rank test over the ten paired seeds confirms the
   difference is significant (W = 0.0, p = 0.0020), with the linear
   model exceeding the convolutional one on 10 of 10 partitions.

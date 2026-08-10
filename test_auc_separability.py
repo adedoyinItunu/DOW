@@ -1,7 +1,7 @@
 """
 test_auc_separability.py  --  ITEM 9: class-distribution separability
 =====================================================================
-Answers the objection recorded in Section 5.6 of the thesis: the signal-to-noise
+Answers the objection recorded in the research report of the thesis: the signal-to-noise
 analysis compares injected signal against WITHIN-IMAGE noise, whereas the
 classification task requires separating the leech and normal DISTRIBUTIONS.
 
@@ -62,10 +62,10 @@ def main():
     print("\nReading:")
     print("  AUC stays high as scale falls -> the leech/normal distributions remain")
     print("    separable on a single scalar, so the detectors' collapse is a failure")
-    print("    to use available information (supports the Section 5.3 reading).")
+    print("    to use available information (supports the the research report reading).")
     print("  AUC falls toward 0.5 alongside detection -> the distributions genuinely")
     print("    overlap, and the evasion threshold reflects the task, not the detectors.")
-    print("\nEither outcome resolves the limitation stated in Section 5.6.")
+    print("\nEither outcome resolves the limitation stated in the research report.")
 
 
 if __name__ == "__main__":

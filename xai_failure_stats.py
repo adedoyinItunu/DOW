@@ -1,5 +1,5 @@
 """
-xai_failure_stats.py  --  uncertainty and cross-method checks for Section 4.8
+xai_failure_stats.py  --  uncertainty and cross-method checks for the research report
 ==============================================================================
 experiment6_xai_failures.py reports group means and standard deviations for the
 late-column attention share. That supports an ordering but not an inference, and
@@ -9,7 +9,7 @@ it leaves two things unstated that a reader needs:
     the target varies by group: the failure group and the attack groups use the
     failure class, while the correctly classified Config-A normals use the normal
     class. Because global average pooling makes Grad-CAM equivalent to CAM on
-    this network (thesis Section 3.6.1), the map for class c is a fixed weighting
+    this network (the research report), the map for class c is a fixed weighting
     w_c of the channel activations, so a different target gives a genuinely
     different map and the two are not obviously comparable. This script reports
     BOTH conventions: 'predicted' (as originally run) and 'fixed' (the failure
@@ -24,7 +24,7 @@ it leaves two things unstated that a reader needs:
 
 It then repeats the whole analysis with SALIENCY and SHAP in place of Grad-CAM.
 Agreement across methods strengthens the interpretation; disagreement is itself a
-reportable explainability result, and Section 4.3 already establishes that
+reportable explainability result, and the research report already establishes that
 saliency and Grad-CAM agree at close to chance on individual maps. Whether they
 agree at GROUP level on this ordering is a different question and is the one this
 script answers.
@@ -192,9 +192,9 @@ def main():
     print("READ THIS AS: the claim is about the RELATIVE ORDERING of group means,")
     print("not about which cells drive any individual prediction. If the ordering")
     print("holds under both target conventions and across all three attribution")
-    print("methods, the interpretation in Section 4.8 is supported independently")
+    print("methods, the interpretation in the research report is supported independently")
     print("of the choice of method. If it does not, report the disagreement: it is")
-    print("a meaningful explainability result either way (Section 4.3).")
+    print("a meaningful explainability result either way (the research report).")
 
 
 if __name__ == "__main__":

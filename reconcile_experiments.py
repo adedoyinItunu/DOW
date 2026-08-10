@@ -97,7 +97,7 @@ def main():
     print(f"attack samples predicted normal (E1 view): {attack_to_normal}")
 
     # ---- 4: E3 leech vs flood on the SAME split & model ----
-    # intensity tag: 1 = leech, 2 = flood, 0 = normal (adjust if your tag differs)
+    # intensity tag: 1 = leech, 2 = flood, 0 = normal (adjust if the tag differs)
     leech_mask = ite == 1
     flood_mask = ite == 2
     leech_acc = (pred[leech_mask] == yte[leech_mask]).mean() if leech_mask.any() else float("nan")

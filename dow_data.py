@@ -26,7 +26,7 @@ robustness test. The DEFAULTS select the L-ramp condition, in which all
 originally reported results were obtained. Note that they do not byte-for-byte
 reproduce the pre-L-const generator: adding the unconditional `onset` draw
 shifted the random stream, so default output is a different realisation of the
-same distribution. See thesis Section 3.8.2.
+same distribution. See the research report.
 
     peak_hour   diurnal peak (default 13.0)      --peak-hour
     width       diurnal spread (default 3.5)     --width
@@ -72,7 +72,7 @@ Two definitions of the `linear` class are supported, selected by --linear-const.
     bit-identical between the two datasets, while `geometric` and `random`
     are drawn from identical distributions but not identical random states,
     with aggregate totals differing by under 0.5%. This is a difference of
-    realisation, not of distribution. See thesis Section 3.2.1.
+    realisation, not of distribution. See the research report.
 
 Run:
     python dow_data.py --per-class 300 --out data.npz              # Config A (default)
@@ -117,7 +117,7 @@ def _diurnal_base(rng, p: GenParams):
     daily = 0.15 + np.exp(-((hours - p.peak_hour) ** 2) / (2 * p.width ** 2))
     if p.weekly_shape == "sinusoid":
         # DoWTS adds a 7-day sinusoid representing INCREASED weekend traffic.
-        # The square variant below instead REDUCES it: thesis Section 5.5.2.
+        # The square variant below instead REDUCES it: the research report.
         weekly = 1.0 + p.weekly_amp * np.sin(
             2 * np.pi * (days - p.weekly_phase) / 7.0)
     else:

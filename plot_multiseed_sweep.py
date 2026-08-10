@@ -5,7 +5,7 @@ Regenerates e5_leech_sweep.png from the five-seed sweep results,
 with error bars, for both the CNN and the logistic-regression baseline.
 
 No re-running of experiments needed - the numbers below are the ones
-your sweeps already printed. If you re-run with different seeds,
+the sweeps already printed. If re-run with different seeds,
 just update the six arrays.
 
 Usage:
@@ -20,7 +20,7 @@ matplotlib.use("Agg")          # no display needed
 import matplotlib.pyplot as plt
 
 # ---------------------------------------------------------------
-# Results from your five-seed runs. Update if you re-run.
+# Results from the five-seed runs. Update if re-run.
 # ---------------------------------------------------------------
 SCALES = np.array([1.00, 0.70, 0.50, 0.30, 0.20, 0.10])
 

@@ -10,7 +10,7 @@ heat-map the detector consumes, and runs BOTH models on it live:
   * the one-parameter mean-brightness threshold, calibrated on startup
 
 Nothing here is precomputed or faked. Every number on the page comes from a
-forward pass performed when you press the button.
+forward pass performed when the button is pressed.
 
     pip install flask                 # only dependency not already pinned
     python demo_app.py

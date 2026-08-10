@@ -1,7 +1,7 @@
 """
 experiment5_leech_sweep.py  --  controlled leech-intensity analysis
 ==================================================================
-Makki's priority #1: examine leech detection across CONTROLLED intensity levels,
+Examines leech detection across CONTROLLED intensity levels,
 rather than at a single setting. Generates datasets with the leech scaled to
 several intensities, evaluates the trained model on each, and reports for the
 LEECH subset: accuracy, misread-as-normal rate, and per-class breakdown.

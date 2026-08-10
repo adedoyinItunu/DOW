@@ -2,7 +2,7 @@
 audit_checkpoints.py
 
 Loads each saved checkpoint WITHOUT retraining and reports the E1, E3
-and E4 numbers it produces. This tells you which checkpoint generated
+and E4 numbers it produces. This identifies which checkpoint generated
 which figures in the thesis, and whether the old numbers were ever
 self-consistent.
 
@@ -118,7 +118,7 @@ def main():
     print("\nHOW TO READ THIS:")
     print("  * If one checkpoint matches ALL FOUR thesis numbers, the old")
     print("    figures were self-consistent. Keep them; just state which")
-    print("    checkpoint they came from in Section 3.8.")
+    print("    checkpoint they came from in the research report.")
     print("  * If no single checkpoint matches all four, the thesis numbers")
     print("    were drawn from different models. Use dow_cnn_locked.pt for")
     print("    everything and regenerate E1, E2, E3, E4, the transfer test")

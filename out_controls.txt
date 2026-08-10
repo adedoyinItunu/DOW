@@ -25,7 +25,7 @@ CONTROL 2: saliency-Grad-CAM IoU at matched resolution
 
   => Agreement does not rise at matched resolution.
      The resolution difference does NOT explain the
-     disagreement, which supports the current Section 4.3
+     disagreement, which supports the current the research report
      claim -- now tested rather than asserted.
 
 ======================================================================

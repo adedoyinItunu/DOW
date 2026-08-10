@@ -108,6 +108,6 @@ METHOD: shap    TARGET CLASS: fixed (= geometric for every group)
 READ THIS AS: the claim is about the RELATIVE ORDERING of group means,
 not about which cells drive any individual prediction. If the ordering
 holds under both target conventions and across all three attribution
-methods, the interpretation in Section 4.8 is supported independently
+methods, the interpretation in the research report is supported independently
 of the choice of method. If it does not, report the disagreement: it is
-a meaningful explainability result either way (Section 4.3).
+a meaningful explainability result either way (the research report).

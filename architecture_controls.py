@@ -82,7 +82,7 @@ def train_one(Xtr, ytr, Xv, yv, n_classes, arch, protocol,
             sched.step()
 
         # validation accuracy is always recorded; it is only USED when
-        # protocol == fixed25_sel. Recording it costs nothing and gives you
+        # protocol == fixed25_sel. Recording it costs nothing and gives
         # the epoch trace that section 4.2.1 currently reports as prose.
         model.eval()
         with torch.no_grad():

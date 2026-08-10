@@ -58,16 +58,14 @@ The matched-filter SNR (d-prime) is the detectability of the whole 24x30
 image, i.e. what a classifier with access to every cell could in principle
 exploit. It is the relevant quantity, not the per-cell SNR.
 
-  * If d' stays WELL ABOVE 1 at the scales where your detector collapses
+  * If d' stays WELL ABOVE 1 at the scales where the detector collapses
     (between 0.5 and 0.3), then the information is present and the detector
     is failing to use it. The threshold is REPRESENTATIONAL or a property of
-    the models tested -- your current claim stands.
+    the models tested, and the representational reading is supported.
 
   * If d' falls to around 1 at those same scales, the signal has dropped
     into the noise and no detector could recover it. The threshold is
-    INFORMATIONAL -- a property of the detection problem. Your finding is
-    still real and better grounded, but Sections 4.6 and 5.3 must be
-    reworded: it is not the heat-map representation that imposes the limit.
+    INFORMATIONAL -- a property of the detection problem. The finding is still real and better grounded, and the limit would not be imposed by the heat-map representation.
 
 Note also that the model sees log1p-normalised values, which compress large
 counts more than small ones. The raw-count SNR computed here is therefore an

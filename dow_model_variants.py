@@ -65,7 +65,7 @@ class DoWNetFull(nn.Module):
     """Three conv layers, four dense layers, as described for DoWNet.
 
     Widths are a reconstruction, not a specification. Check
-    `param_report()` against the 231 kB figure and adjust `c` / `d` if you
+    `param_report()` against the 231 kB figure and adjust `c` / `d` if the count
     want a closer match, then state the calibration in the methodology.
     """
 

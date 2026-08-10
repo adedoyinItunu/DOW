@@ -1,7 +1,7 @@
 """
 perclass_across_seeds.py  --  per-class metrics across random seeds
 ==================================================================
-Makki's request: report per-class results across the existing seeds, because an
+Reports per-class results across the existing seeds, because an
 aggregate macro-F1 can mask weaker or more variable performance on a specific
 class. Trains the baseline across seeds and reports, per class, the mean and
 standard deviation of precision, recall and F1 over the seeds.

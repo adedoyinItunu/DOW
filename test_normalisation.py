@@ -13,8 +13,7 @@ class. It has never been tested directly.
 The test: retrain on Configuration A and evaluate on Configuration B, twice.
 Once with the fixed divisor log1p(400), once with per-image normalisation.
 If the normal-class F1 recovers under per-image normalisation, the claim is
-demonstrated. If it does not, the cause is the diurnal-shape sensitivity you
-also observed, and Sections 4.7, 4.8 and 5.1 need rewriting.
+demonstrated. If it does not, the cause is the diurnal-shape sensitivity also observed, and the account is a partial rather than a sole cause.
 
 This script does NOT modify dow_data.py. It loads the raw counts from the
 .npz files and applies each normalisation itself.
@@ -173,21 +172,21 @@ def main():
         print(f"CLAIM SUPPORTED. Normal-class F1 recovers from "
               f"{base_normal:.3f} to {alt_normal:.3f} under '{best_alt}'.")
         print("The fixed-constant normalisation is demonstrably the cause of")
-        print("the transfer failure. Sections 4.7 and 5.1 can state this as a")
+        print("the transfer failure. the research report can state this as a")
         print("tested result rather than an inference.")
     elif alt_normal > base_normal + 0.05:
         print(f"PARTIAL. Normal-class F1 rises from {base_normal:.3f} to "
               f"{alt_normal:.3f} under '{best_alt}'.")
         print("Normalisation contributes but does not fully account for the")
         print("failure. The diurnal-shape sensitivity is also implicated.")
-        print("Reword Sections 4.7 and 5.1 to reflect a partial cause.")
+        print("The result indicates a partial rather than a sole cause.")
     else:
         print(f"CLAIM NOT SUPPORTED. Normal-class F1 stays at "
               f"{alt_normal:.3f} versus {base_normal:.3f}.")
         print("Per-image normalisation does not fix the transfer failure, so")
         print("the fixed divisor is NOT the cause. The remaining candidate is")
-        print("the diurnal-shape (width) sensitivity reported in Section 4.7.")
-        print("Sections 4.7, 4.8 and 5.1 must be rewritten accordingly.")
+        print("the diurnal-shape (width) sensitivity reported in the research report.")
+        print("the reported account would not hold.")
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ Fits the multinomial logistic-regression baseline on the same split as the CNN,
 reshapes its 720 per-class coefficients to the 24x30 grid, and saves them as one
 diverging-scale panel per class.
 
-It also prints the three quantities Section 4.2.3 asserts about this figure, so
+It also prints the three quantities the research report asserts about this figure, so
 they can be checked rather than taken on trust:
 
   * share of each class's absolute coefficient mass in the final week (days 24-30)
@@ -74,7 +74,7 @@ def main():
     fig.savefig(args.out, dpi=args.dpi, bbox_inches="tight")
     print(f"wrote {args.out}  (data={args.data}, split seed={args.seed})\n")
 
-    # ---- claims asserted in Section 4.2.3 -------------------------------
+    # ---- claims asserted in the research report -------------------------------
     a = np.abs(coef)
 
     print("Final-week share of absolute coefficient mass (days 24-30)")
@@ -90,7 +90,7 @@ def main():
         top = np.argsort(a[k].sum(axis=1))[::-1][:3]
         print(f"    {name:10s} {sorted(top.tolist())}")
 
-    print("\nIf any figure above differs from Section 4.2.3, update the thesis "
+    print("\nIf any figure above differs from the research report, update the thesis "
           "to match this output.")
 
 

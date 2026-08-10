@@ -1,7 +1,7 @@
 """
-plot_val_traces.py  --  validation trajectories for Section 4.2.1
+plot_val_traces.py  --  validation trajectories for the research report
 =================================================================
-Section 4.2.1 quotes seven numbers in prose ("0.972, 0.883, 0.911, 0.861, 0.622,
+the research report quotes seven numbers in prose ("0.972, 0.883, 0.911, 0.861, 0.622,
 1.000, 0.967") for what is now a row in Table 4.16 and one of the study's more
 contested claims. This plots the trajectories instead, from the val_traces field
 that architecture_controls.py writes into its JSON.

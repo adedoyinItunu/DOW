@@ -1,10 +1,10 @@
 """
 xai_controls.py
 
-Two controls the review flagged as missing from Section 4.3.
+Two controls on the per-sample attribution results.
 
 CONTROL 1 -- random-perturbation fidelity baseline
-    You report perturbation fidelity of 0.528: occlude the top 10% of pixels
+    Perturbation fidelity is measured by occluding the top 10% of pixels
     an attribution method highlights, measure the drop in predicted class
     probability. Without a control that number is uninterpretable. On dense
     heat-maps where every cell carries traffic, perturbing ANY 10% of pixels
@@ -14,7 +14,7 @@ CONTROL 1 -- random-perturbation fidelity baseline
     several draws, so the attribution-guided figure has something to beat.
 
 CONTROL 2 -- downsampled-saliency IoU
-    Section 4.3 argues that a twofold resolution difference cannot account
+    the research report argues that a twofold resolution difference cannot account
     for saliency and Grad-CAM agreeing at chance level. That is asserted,
     not tested. Grad-CAM operates on block2's 12x15 feature map; saliency is
     per-pixel on 24x30.
@@ -22,8 +22,7 @@ CONTROL 2 -- downsampled-saliency IoU
     This average-pools saliency to 12x15, takes the top 10% at that
     resolution, and recomputes IoU against Grad-CAM at the same resolution.
     If agreement stays near chance, the assertion is proved. If it rises
-    substantially, the resolution explanation was right and Section 4.3
-    needs rewriting.
+    substantially, the resolution explanation was right and the reported claim does not hold.
 
 Usage:
     python xai_controls.py --model dow_cnn_locked.pt --seed 42
@@ -224,12 +223,12 @@ def main():
     if mat.mean() > nat.mean() + 0.10:
         print("\n  => Agreement rises substantially at matched resolution.")
         print("     The resolution difference DOES explain much of the")
-        print("     disagreement. Section 4.3 must be rewritten: the claim")
+        print("     disagreement. the reported claim does not hold: the claim")
         print("     that resolution cannot account for it is wrong.")
     else:
         print("\n  => Agreement does not rise at matched resolution.")
         print("     The resolution difference does NOT explain the")
-        print("     disagreement, which supports the current Section 4.3")
+        print("     disagreement, which supports the current the research report")
         print("     claim -- now tested rather than asserted.")
 
     # ---- LaTeX ----

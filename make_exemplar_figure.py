@@ -8,7 +8,7 @@ variants, so two independent normal samples are shown instead.
 
 All panels share a single colour scale. This is deliberate: the fixed
 log1p(400) divisor means absolute brightness is comparable across images, and
-the figure should show that, because Sections 4.7 and 4.8 turn on it.
+the figure should show that, because the research report turn on it.
 
 Usage:
     python make_exemplar_figure.py --data data_lramp.npz --out heatmap_exemplars.png
@@ -36,7 +36,7 @@ except ImportError:
 CLASS_NAMES = ["normal", "linear", "geometric", "random"]
 
 # Candidate key names, in order of preference. The script prints whatever it
-# finds if none of these match, so you can pass the right ones explicitly.
+# finds if none of these match, so the correct names can be passed explicitly.
 X_KEYS = ["X", "images", "x", "data", "heatmaps"]
 Y_KEYS = ["y", "labels", "label", "classes"]
 I_KEYS = ["intensity", "intensities", "intensity_tag", "tag", "z"]

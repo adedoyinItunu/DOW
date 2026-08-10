@@ -3,7 +3,7 @@ evaluate_cross.py  --  the generator-parameter robustness test
 ==============================================================
 Loads a CNN trained on one generator configuration and evaluates it on a dataset
 generated with DIFFERENT parameters. Reports per-class precision/recall/F1, the
-confusion matrix, and a leech-vs-flood breakdown -- the checks Dr. Makki asked
+confusion matrix, and a leech-vs-flood breakdown -- the additional checks required
 for (per-class rather than aggregate, with attention to the low-rate leech).
 
     # 1. train on Config A (default generator)

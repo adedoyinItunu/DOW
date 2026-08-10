@@ -9,7 +9,7 @@ within-configuration performance and nothing about the leech.
 That is not enough to call the change a refinement rather than a trade. A
 per-image scheme removes absolute traffic intensity from the input, and absolute
 intensity is exactly what separates a quiet leech from legitimate traffic
-(thesis Section 4.5.1). The fix for the transfer failure may therefore cost
+(the research report). The fix for the transfer failure may therefore cost
 low-intensity detection, and the point of this experiment is to measure both.
 
 Four axes are reported per scheme, with the model, the seeds, the splits and the

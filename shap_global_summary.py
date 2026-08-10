@@ -9,8 +9,8 @@ It also splits by intensity tag, which produces the leech-vs-flood comparison of
 explanation maps that sub-question SQ2 asks for.
 
 IMPORTANT: aggregate maps are reported at GROUP level. The thesis shows that
-per-sample attributions do not survive their controls (Section 4.2), while
-group-level mean attention does (Section 4.6). Do not present per-sample
+per-sample attributions do not survive their controls (the research report), while
+group-level mean attention does (the research report). Do not present per-sample
 signatures on the strength of this output.
 
     python shap_global_summary.py

@@ -49,5 +49,5 @@ VERDICT
 
 CLAIM SUPPORTED. Normal-class F1 recovers from 0.000 to 0.783 under 'per-image robust'.
 The fixed-constant normalisation is demonstrably the cause of
-the transfer failure. Sections 4.7 and 5.1 can state this as a
+the transfer failure. the research report can state this as a
 tested result rather than an inference.

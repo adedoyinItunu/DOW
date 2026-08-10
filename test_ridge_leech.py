@@ -11,11 +11,11 @@ intensity and reports whether leech detection recovers.
 
   * Recovery with stronger regularisation  -> estimation error confirmed.
     The signal is linearly separable; the fit was just badly conditioned.
-    Your design recommendation (global evidence integration, properly
+    The design recommendation (global evidence integration, properly
     regularised) stands and is now tested.
 
   * No recovery at any C                   -> the explanation is wrong.
-    Soften the sentence in Section 4.6 to state only what was measured.
+    Soften the sentence in the research report to state only what was measured.
 
 Also fits an oracle matched filter -- the theoretically optimal linear
 detector, computed from the class means and noise rather than learned --
@@ -155,14 +155,14 @@ def main():
     print("""
 Compare three things at each scale:
 
-  1. Unregularised LR (C=100)  -- roughly your Chapter 4 baseline
+  1. Unregularised LR (C=100)  -- roughly the reported baseline
   2. Best regularised LR       -- does penalising the weights help?
   3. Oracle matched filter     -- the best any linear detector could do
 
   * Regularised LR >> unregularised, and approaching the oracle
       -> ESTIMATION ERROR CONFIRMED. The signal is linearly separable at
-         this intensity; the unregularised fit was badly conditioned. Your
-         claim is now tested and your design recommendation follows.
+         this intensity; the unregularised fit was badly conditioned. The
+         claim is now tested and the design recommendation follows.
 
   * Regularisation makes little difference, but the ORACLE succeeds
       -> the signal IS separable, but neither a learned linear model nor
@@ -171,7 +171,7 @@ Compare three things at each scale:
 
   * Neither regularised LR nor the oracle recovers the leech
       -> the estimation explanation is WRONG. Delete that sentence from
-         Section 4.6 and state only what the SNR analysis measured.
+         the research report and state only what the SNR analysis measured.
 """)
 
 
