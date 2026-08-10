@@ -1,0 +1,73 @@
+{
+  "method": "saliency",
+  "protocol": "converged",
+  "k": 50,
+  "uniform": 0.23333333333333334,
+  "per_seed": [
+    {
+      "seed": 0,
+      "failure_class": "linear",
+      "n_failed": 300,
+      "means": {
+        "failure": 0.23203868925571441,
+        "normal-ok": 0.26178648382425307,
+        "genuine": 0.25947867691516874,
+        "leech": 0.2694659823179245,
+        "flood": 0.2530019384622574
+      },
+      "failure_is_lowest": true
+    },
+    {
+      "seed": 1,
+      "failure_class": "linear",
+      "n_failed": 300,
+      "means": {
+        "failure": 0.23029277563095094,
+        "normal-ok": 0.25313702821731565,
+        "genuine": 0.25146219551563265,
+        "leech": 0.2748720318078995,
+        "flood": 0.25516183346509935
+      },
+      "failure_is_lowest": true
+    },
+    {
+      "seed": 2,
+      "failure_class": "linear",
+      "n_failed": 300,
+      "means": {
+        "failure": 0.2611691364645958,
+        "normal-ok": 0.2853931900858879,
+        "genuine": 0.28859135836362837,
+        "leech": 0.3077297881245613,
+        "flood": 0.2830396497249603
+      },
+      "failure_is_lowest": true
+    },
+    {
+      "seed": 3,
+      "failure_class": "linear",
+      "n_failed": 300,
+      "means": {
+        "failure": 0.24472492486238479,
+        "normal-ok": 0.26894792675971985,
+        "genuine": 0.2715520113706589,
+        "leech": 0.2890071615576744,
+        "flood": 0.25611567944288255
+      },
+      "failure_is_lowest": true
+    },
+    {
+      "seed": 4,
+      "failure_class": "linear",
+      "n_failed": 300,
+      "means": {
+        "failure": 0.244678053855896,
+        "normal-ok": 0.26106895923614504,
+        "genuine": 0.2639020323753357,
+        "leech": 0.2821845883131027,
+        "flood": 0.2672943416237831
+      },
+      "failure_is_lowest": true
+    }
+  ]
+}
